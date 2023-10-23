@@ -1,0 +1,1056 @@
+import * as THREE from "three";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
+import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
+import fontface from "./fontface.json";
+import { gsap } from "gsap-trial";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import { MorphSVGPlugin } from "gsap-trial/MorphSVGPlugin";
+//===================================================== SOCIAL MEDIA
+import Box1T from "./Assets/image/Portfolio/Social/1.png";
+import Box2T from "./Assets/image/Portfolio/Social/2.png";
+import Box3T from "./Assets/image/Portfolio/Social/3.png";
+import Box4T from "./Assets/image/Portfolio/Social/4.png";
+import Box5T from "./Assets/image/Portfolio/Social/5.png";
+import Box6T from "./Assets/image/Portfolio/Social/6.png";
+import Box7T from "./Assets/image/Portfolio/Social/7.png";
+import Box8T from "./Assets/image/Portfolio/Social/8.png";
+import Box9T from "./Assets/image/Portfolio/Social/9.png";
+import Box10T from "./Assets/image/Portfolio/Social/10.png";
+import Box11T from "./Assets/image/Portfolio/Social/11.png";
+import Box12T from "./Assets/image/Portfolio/Social/12.png";
+import Box13T from "./Assets/image/Portfolio/Social/1.png";
+import Box14T from "./Assets/image/Portfolio/Social/2.png";
+import Box15T from "./Assets/image/Portfolio/Social/3.png";
+import Box16T from "./Assets/image/Portfolio/Social/4.png";
+//===================================================== PHOTOGRAPHY
+import BoxP1 from "./Assets/image/Portfolio/Photography/1.png";
+import BoxP2 from "./Assets/image/Portfolio/Photography/2.png";
+import BoxP3 from "./Assets/image/Portfolio/Photography/3.png";
+import BoxP4 from "./Assets/image/Portfolio/Photography/4.png";
+import BoxP5 from "./Assets/image/Portfolio/Photography/5.png";
+import BoxP6 from "./Assets/image/Portfolio/Photography/6.png";
+import BoxP7 from "./Assets/image/Portfolio/Photography/7.png";
+import BoxP8 from "./Assets/image/Portfolio/Photography/8.png";
+import BoxP9 from "./Assets/image/Portfolio/Photography/9.png";
+import BoxP10 from "./Assets/image/Portfolio/Photography/10.png";
+import BoxP11 from "./Assets/image/Portfolio/Photography/11.png";
+import BoxP12 from "./Assets/image/Portfolio/Photography/12.png";
+import BoxP13 from "./Assets/image/Portfolio/Photography/13.png";
+import BoxP14 from "./Assets/image/Portfolio/Photography/14.png";
+import BoxP15 from "./Assets/image/Portfolio/Photography/15.png";
+import BoxP16 from "./Assets/image/Portfolio/Photography/16.png";
+import BoxP17 from "./Assets/image/Portfolio/Photography/17.png";
+import BoxP18 from "./Assets/image/Portfolio/Photography/18.png";
+import BoxP19 from "./Assets/image/Portfolio/Photography/19.png";
+import BoxP20 from "./Assets/image/Portfolio/Photography/20.png";
+import BoxP21 from "./Assets/image/Portfolio/Photography/21.png";
+import BoxP22 from "./Assets/image/Portfolio/Photography/22.png";
+import BoxP23 from "./Assets/image/Portfolio/Photography/23.png";
+import BoxP24 from "./Assets/image/Portfolio/Photography/24.png";
+import BoxP25 from "./Assets/image/Portfolio/Photography/25.png";
+import BoxP26 from "./Assets/image/Portfolio/Photography/26.png";
+import BoxP27 from "./Assets/image/Portfolio/Photography/27.png";
+import BoxP28 from "./Assets/image/Portfolio/Photography/28.png";
+import BoxP29 from "./Assets/image/Portfolio/Photography/29.png";
+import BoxP30 from "./Assets/image/Portfolio/Photography/30.png";
+import BoxP31 from "./Assets/image/Portfolio/Photography/31.png";
+import BoxP32 from "./Assets/image/Portfolio/Photography/32.png";
+import BoxP33 from "./Assets/image/Portfolio/Photography/33.png";
+import BoxP34 from "./Assets/image/Portfolio/Photography/34.png";
+import BoxP35 from "./Assets/image/Portfolio/Photography/35.png";
+//===================================================== SOCIAL MEDIA
+import Box1B from "./Assets/image/Portfolio/Branding/1.png";
+import Box2B from "./Assets/image/Portfolio/Branding/2.png";
+import Box3B from "./Assets/image/Portfolio/Branding/3.png";
+import Box4B from "./Assets/image/Portfolio/Branding/4.png";
+import Box5B from "./Assets/image/Portfolio/Branding/5.png";
+import Box6B from "./Assets/image/Portfolio/Branding/6.png";
+import Box7B from "./Assets/image/Portfolio/Branding/7.png";
+import Box8B from "./Assets/image/Portfolio/Branding/8.png";
+//===================================================== UIUX
+import Box1U from "./Assets/image/Portfolio/UIUX/1.png";
+import Box2U from "./Assets/image/Portfolio/UIUX/2.png";
+import Box3U from "./Assets/image/Portfolio/UIUX/3.png";
+import Box4U from "./Assets/image/Portfolio/UIUX/4.png";
+import Box5U from "./Assets/image/Portfolio/UIUX/5.png";
+import Box6U from "./Assets/image/Portfolio/UIUX/6.png";
+import Box7U from "./Assets/image/Portfolio/UIUX/7.png";
+import Box8U from "./Assets/image/Portfolio/UIUX/8.png";
+//===================================================== Shaders
+const vertexShader = `
+  varying float vDistance;
+  varying vec2 vUv;
+
+    void main() {
+      vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+      gl_Position = projectionMatrix * mvPosition;
+      vDistance = -mvPosition.z; // Use negative Z-coordinate as distance from camera
+      vUv = uv;
+    }
+`;
+const fragmentShader = `
+  uniform float maxDistance; // Adjust this value to control the maximum distance for full opacity
+  varying float vDistance;
+  varying vec2 vUv;
+  uniform sampler2D imageTexture;
+
+  void main() {
+    float opacity = clamp(2.6 - (vDistance / maxDistance), 0.0, 1.0);
+    vec4 texColor = texture2D(imageTexture, vUv);
+    gl_FragColor = vec4(texColor.rgb, opacity); // Adjust the color as needed
+  }
+`;
+//===================================================== Init
+let scrollCount = 0;
+const textContainer = document.querySelector(".bz-animation-title");
+const textureLoader = new THREE.TextureLoader();
+const Fontloader = new FontLoader();
+const gs = gsap.timeline();
+gsap.registerPlugin(MorphSVGPlugin);
+gsap.registerPlugin(ScrollTrigger);
+
+//===================================================== Create a WebGL renderer
+let animationStart=false;
+const canvas = document.querySelector(".draw");
+const renderer = new THREE.WebGLRenderer({ canvas });
+renderer.setSize(window.innerWidth, window.innerHeight);
+
+//===================================================== Create an empty scene
+var scene = new THREE.Scene();
+scene.background = new THREE.Color("#ffffff");
+//===================================================== Create a perpsective camera
+var camera = new THREE.PerspectiveCamera(
+  45,
+  window.innerWidth / window.innerHeight,
+  0.001,
+  1000
+);
+camera.position.z = 400;
+
+//===================================================== resize
+window.addEventListener("resize", function () {
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+});
+
+//===================================================== Array of points
+var points = [
+  [0, 100],
+  [0, 40],
+];
+
+//===================================================== Convert the array of points into vertices
+for (var i = 0; i < points.length; i++) {
+  var x = points[i][0];
+  var y = 0;
+  var z = points[i][1];
+  points[i] = new THREE.Vector3(x, y, z);
+}
+//===================================================== Create a path from the points
+var path = new THREE.CatmullRomCurve3(points);
+
+//===================================================== Create the tube geometry from the path
+var sides = 30;
+var geometry = new THREE.TubeGeometry(path, 300, 3, sides, true);
+
+//===================================================== Basic material
+var material = new THREE.MeshBasicMaterial({
+  side: THREE.BackSide,
+  map: new THREE.TextureLoader().load(
+    "https://celestialcode.s3.us-west-2.amazonaws.com/Parvarish/RippleAnimationAssets/env_texture1.png"
+  ),
+});
+material.map.wrapS = THREE.RepeatWrapping;
+material.map.wrapT = THREE.RepeatWrapping;
+material.map.repeat.set(2, 5);
+//===================================================== Create a mesh
+var tube = new THREE.Mesh(geometry, material);
+tube.matrixAutoUpdate = false; //wont be moving so no need to update
+scene.add(tube);
+
+//===================================================== Font Geomarty
+Fontloader.load(
+  "https://celestialcode.s3.us-west-2.amazonaws.com/Parvarish/fontface.json",
+  function (font) {
+    const fontgeometry = new TextGeometry("2001", {
+      font: font,
+      size: 0.5, // Size of the text
+      height: 0.1, // Extrusion depth
+      curveSegments: 12, // Smoothness of the edges
+    });
+    fontgeometry.center();
+
+    const fontMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    const fontMesh = new THREE.Mesh(fontgeometry, fontMaterial);
+
+    // scene.add(fontMesh);
+  }
+);
+//===================================================== SOCIAL MEDAI
+// Box1
+const texture1 = textureLoader.load(Box1T);
+var boxGeometry1 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterial1 = new THREE.MeshBasicMaterial({ map: texture1 });
+var box1 = new THREE.Mesh(boxGeometry1, boxMaterial1);
+box1.position.set(-0.4, -0.2, 98);
+
+// Box2
+const texture2 = textureLoader.load(Box2T);
+var boxGeometry2 = new THREE.BoxGeometry(0.3, 0.35, 0);
+var boxMaterial2 = new THREE.MeshBasicMaterial({ map: texture2 });
+var box2 = new THREE.Mesh(boxGeometry2, boxMaterial2);
+box2.position.set(0.4, -0.2, 97);
+// Box3
+const texture3 = textureLoader.load(Box3T);
+var boxGeometry3 = new THREE.BoxGeometry(0.3, 0.35, 0);
+var boxMaterial3 = new THREE.MeshBasicMaterial({ map: texture3 });
+var box3 = new THREE.Mesh(boxGeometry3, boxMaterial3);
+box3.position.set(-0.4, 0.4, 96);
+// Box4
+const texture4 = textureLoader.load(Box4T);
+var boxGeometry4 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterial4 = new THREE.MeshBasicMaterial({ map: texture4 });
+var box4 = new THREE.Mesh(boxGeometry4, boxMaterial4);
+box4.position.set(0.4, 0.4, 95);
+// Box5
+const texture5 = textureLoader.load(Box5T);
+var boxGeometry5 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterial5 = new THREE.MeshBasicMaterial({ map: texture5 });
+var box5 = new THREE.Mesh(boxGeometry5, boxMaterial5);
+box5.position.set(-0.5, -0.3, 94);
+
+// Box6
+const texture6 = textureLoader.load(Box6T);
+var boxGeometry6 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterial6 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: texture6 },
+  },
+});
+var box6 = new THREE.Mesh(boxGeometry6, boxMaterial6);
+box6.position.set(0.5, -0.3, 93);
+// Box7
+const texture7 = textureLoader.load(Box7T);
+var boxGeometry7 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterial7 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: texture7 },
+  },
+});
+var box7 = new THREE.Mesh(boxGeometry7, boxMaterial7);
+box7.position.set(-0.5, 0.3, 92);
+// Box8
+const texture8 = textureLoader.load(Box8T);
+var boxGeometry8 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterial8 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: texture8 },
+  },
+});
+var box8 = new THREE.Mesh(boxGeometry8, boxMaterial8);
+box8.position.set(0.5, 0.3, 91);
+// Box9
+const texture9 = textureLoader.load(Box9T);
+var boxGeometry9 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterial9 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: texture9 },
+  },
+});
+var box9 = new THREE.Mesh(boxGeometry9, boxMaterial9);
+box9.position.set(-0.6, -0.4, 90);
+
+// Box10
+const texture10 = textureLoader.load(Box10T);
+var boxGeometry10 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterial10 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: texture10 },
+  },
+});
+var box10 = new THREE.Mesh(boxGeometry10, boxMaterial10);
+box10.position.set(0.6, -0.4, 89);
+// Box11
+const texture11 = textureLoader.load(Box11T);
+var boxGeometry11 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterial11 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: texture11 },
+  },
+});
+var box11 = new THREE.Mesh(boxGeometry11, boxMaterial11);
+box11.position.set(-0.4, 0.4, 88);
+// Box12
+const texture12 = textureLoader.load(Box12T);
+var boxGeometry12 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterial12 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: texture12 },
+  },
+});
+var box12 = new THREE.Mesh(boxGeometry12, boxMaterial12);
+box12.position.set(0.6, 0.4, 87);
+// Box13
+const texture13 = textureLoader.load(Box13T);
+var boxGeometry13 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterial13 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: texture13 },
+  },
+});
+var box13 = new THREE.Mesh(boxGeometry13, boxMaterial13);
+box13.position.set(-0.4, -0.2, 86);
+
+// Box14
+const texture14 = textureLoader.load(Box14T);
+var boxGeometry14 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterial14 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: texture14 },
+  },
+});
+var box14 = new THREE.Mesh(boxGeometry14, boxMaterial14);
+box14.position.set(0.4, -0.2, 85);
+// Box15
+const texture15 = textureLoader.load(Box15T);
+var boxGeometry15 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterial15 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: texture15 },
+  },
+});
+var box15 = new THREE.Mesh(boxGeometry15, boxMaterial15);
+box15.position.set(-0.4, 0.4, 84);
+// Box16
+const texture16 = textureLoader.load(Box16T);
+var boxGeometry16 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterial16 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: texture16 },
+  },
+});
+var box16 = new THREE.Mesh(boxGeometry16, boxMaterial16);
+box16.position.set(0.4, 0.4, 83);
+scene.add(
+  box1,
+  box2,
+  box3,
+  box4,
+  box5,
+  box6,
+  box7,
+  box8,
+  box9,
+  box10,
+  box11,
+  box12,
+  box13,
+  box14,
+  box15,
+  box16
+);
+//===================================================== PHOTOGRAPHY
+// BoxP1
+const textureP1 = textureLoader.load(BoxP1);
+var boxGeometryP1 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterialP1 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureP1 },
+  },
+});
+var boxP1 = new THREE.Mesh(boxGeometryP1, boxMaterialP1);
+boxP1.position.set(-0.4, -0.2, 82);
+// BoxP2
+const textureP2 = textureLoader.load(BoxP2);
+var boxGeometryP2 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterialP2 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureP2 },
+  },
+});
+var boxP2 = new THREE.Mesh(boxGeometryP2, boxMaterialP2);
+boxP2.position.set(0.4, -0.2, 81);
+// BoxP3
+const textureP3 = textureLoader.load(BoxP3);
+var boxGeometryP3 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterialP3 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureP3 },
+  },
+});
+var boxP3 = new THREE.Mesh(boxGeometryP3, boxMaterialP3);
+boxP3.position.set(-0.4, 0.4, 80);
+// BoxP4
+const textureP4 = textureLoader.load(BoxP4);
+var boxGeometryP4 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterialP4 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureP4 },
+  },
+});
+var boxP4 = new THREE.Mesh(boxGeometryP4, boxMaterialP4);
+boxP4.position.set(0.4, 0.4, 79);
+// BoxP5
+const textureP5 = textureLoader.load(BoxP5);
+var boxGeometryP5 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterialP5 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureP5 },
+  },
+});
+var boxP5 = new THREE.Mesh(boxGeometryP5, boxMaterialP5);
+boxP5.position.set(-0.4, -0.2, 78);
+// BoxP6
+const textureP6 = textureLoader.load(BoxP6);
+var boxGeometryP6 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterialP6 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureP6 },
+  },
+});
+var boxP6 = new THREE.Mesh(boxGeometryP6, boxMaterialP6);
+boxP6.position.set(0.4, -0.2, 77);
+// BoxP7
+const textureP7 = textureLoader.load(BoxP7);
+var boxGeometryP7 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterialP7 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureP7 },
+  },
+});
+var boxP7 = new THREE.Mesh(boxGeometryP7, boxMaterialP7);
+boxP7.position.set(-0.4, 0.4, 76);
+// BoxP8
+const textureP8 = textureLoader.load(BoxP8);
+var boxGeometryP8 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterialP8 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureP8 },
+  },
+});
+var boxP8 = new THREE.Mesh(boxGeometryP8, boxMaterialP8);
+boxP8.position.set(0.4, 0.4, 75);
+// BoxP9
+const textureP9 = textureLoader.load(BoxP9);
+var boxGeometryP9 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterialP9 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureP9 },
+  },
+});
+var boxP9 = new THREE.Mesh(boxGeometryP9, boxMaterialP9);
+boxP9.position.set(-0.4, -0.2, 74);
+// BoxP10
+const textureP10 = textureLoader.load(BoxP10);
+var boxGeometryP10 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterialP10 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureP10 },
+  },
+});
+var boxP10 = new THREE.Mesh(boxGeometryP10, boxMaterialP10);
+boxP10.position.set(0.4, -0.2, 73);
+// BoxP11
+const textureP11 = textureLoader.load(BoxP11);
+var boxGeometryP11 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterialP11 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureP11 },
+  },
+});
+var boxP11 = new THREE.Mesh(boxGeometryP11, boxMaterialP11);
+boxP11.position.set(-0.4, 0.4, 72);
+// BoxP12
+const textureP12 = textureLoader.load(BoxP12);
+var boxGeometryP12 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterialP12 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureP12 },
+  },
+});
+var boxP12 = new THREE.Mesh(boxGeometryP12, boxMaterialP12);
+boxP12.position.set(0.4, 0.4, 71);
+// BoxP13
+const textureP13 = textureLoader.load(BoxP13);
+var boxGeometryP13 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterialP13 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureP13 },
+  },
+});
+var boxP13 = new THREE.Mesh(boxGeometryP13, boxMaterialP13);
+boxP13.position.set(-0.4, -0.2, 70);
+// BoxP14
+const textureP14 = textureLoader.load(BoxP14);
+var boxGeometryP14 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterialP14 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureP14 },
+  },
+});
+var boxP14 = new THREE.Mesh(boxGeometryP14, boxMaterialP14);
+boxP14.position.set(0.4, -0.2, 69);
+// BoxP15
+const textureP15 = textureLoader.load(BoxP15);
+var boxGeometry15 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterial15 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureP15 },
+  },
+});
+var boxP15 = new THREE.Mesh(boxGeometry15, boxMaterial15);
+boxP15.position.set(0.4, 0.4, 71);
+// BoxP16
+const textureP16 = textureLoader.load(BoxP16);
+var boxGeometryP16 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterialP16 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureP16 },
+  },
+});
+var boxP16 = new THREE.Mesh(boxGeometryP16, boxMaterialP16);
+boxP16.position.set(-0.4, 0.4, 70);
+// BoxP17
+const textureP17 = textureLoader.load(BoxP17);
+var boxGeometryP17 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterialP17 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureP17 },
+  },
+});
+var boxP17 = new THREE.Mesh(boxGeometryP17, boxMaterialP17);
+boxP17.position.set(-0.4, -0.2, 70);
+// BoxP18
+const textureP18 = textureLoader.load(BoxP14);
+var boxGeometryP18 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterialP18 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureP18 },
+  },
+});
+var boxP18 = new THREE.Mesh(boxGeometryP18, boxMaterialP18);
+boxP18.position.set(0.4, -0.2, 69);
+// BoxP19
+const textureP19 = textureLoader.load(BoxP19);
+var boxGeometryP19 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterialP19 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureP19 },
+  },
+});
+var boxP19 = new THREE.Mesh(boxGeometryP19, boxMaterialP19);
+boxP19.position.set(0.4, 0.4, 68);
+// BoxP20
+const textureP20 = textureLoader.load(BoxP20);
+var boxGeometryP20 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterialP20 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureP20 },
+  },
+});
+var boxP20 = new THREE.Mesh(boxGeometryP20, boxMaterialP20);
+boxP20.position.set(-0.4, 0.4, 67);
+
+scene.add(
+  boxP1,
+  boxP2,
+  boxP3,
+  boxP4,
+  boxP5,
+  boxP6,
+  boxP7,
+  boxP8,
+  boxP9,
+  boxP10,
+  boxP11,
+  boxP12,
+  boxP13,
+  boxP14,
+  boxP15,
+  boxP16,
+  boxP17,
+  boxP18,
+  boxP19,
+  boxP20
+);
+//===================================================== BRANDING
+// BoxB1
+const textureB1 = textureLoader.load(Box1B);
+var boxGeometryB1 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterialB1 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureB1 },
+  },
+});
+var boxB1 = new THREE.Mesh(boxGeometryB1, boxMaterialB1);
+boxB1.position.set(-0.4, -0.2, 65);
+
+// BoxB2
+const textureB2 = textureLoader.load(Box2B);
+var boxGeometryB2 = new THREE.BoxGeometry(0.3, 0.35, 0);
+var boxMaterialB2 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureB2 },
+  },
+});
+var boxB2 = new THREE.Mesh(boxGeometryB2, boxMaterialB2);
+boxB2.position.set(0.4, -0.2, 64);
+// BoxB3
+const textureB3 = textureLoader.load(Box3B);
+var boxGeometryB3 = new THREE.BoxGeometry(0.4, 0.3, 0);
+var boxMaterialB3 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureB3 },
+  },
+});
+var boxB3 = new THREE.Mesh(boxGeometryB3, boxMaterialB3);
+boxB3.position.set(-0.4, 0.4, 63);
+
+// BoxB4
+const textureB4 = textureLoader.load(Box4B);
+var boxGeometryB4 = new THREE.BoxGeometry(0.4, 0.3, 0);
+var boxMaterialB4 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureB4 },
+  },
+});
+var boxB4 = new THREE.Mesh(boxGeometryB4, boxMaterialB4);
+boxB4.position.set(0.4, 0.4, 62);
+// BoxB5
+const textureB5 = textureLoader.load(Box5B);
+var boxGeometryB5 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxMaterialB5 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureB5 },
+  },
+});
+var boxB5 = new THREE.Mesh(boxGeometryB5, boxMaterialB5);
+boxB5.position.set(-0.4, -0.2, 61);
+
+// BoxB6
+const textureB6 = textureLoader.load(Box6B);
+var boxGeometryB6 = new THREE.BoxGeometry(0.3, 0.35, 0);
+var boxMaterialB6 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureB6 },
+  },
+});
+var boxB6 = new THREE.Mesh(boxGeometryB6, boxMaterialB6);
+boxB6.position.set(0.4, -0.2, 60);
+// BoxB7
+const textureB7 = textureLoader.load(Box7B);
+var boxGeometryB7 = new THREE.BoxGeometry(0.4, 0.3, 0);
+var boxMaterialB7 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureB7 },
+  },
+});
+var boxB7 = new THREE.Mesh(boxGeometryB7, boxMaterialB7);
+boxB7.position.set(-0.4, 0.4, 59);
+
+// BoxB8
+const textureB8 = textureLoader.load(Box8B);
+var boxGeometryB8 = new THREE.BoxGeometry(0.4, 0.3, 0);
+var boxMaterialB8 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureB8 },
+  },
+});
+var boxB8 = new THREE.Mesh(boxGeometryB8, boxMaterialB8);
+boxB8.position.set(0.4, 0.4, 58);
+
+scene.add(boxB1, boxB2, boxB3, boxB4, boxB5, boxB6, boxB7, boxB8);
+//===================================================== UI/UX
+// BoxU1
+const textureU1 = textureLoader.load(Box1U);
+var boxGeometryU1 = new THREE.BoxGeometry(0.4, 0.3, 0);
+var boxMaterialU1 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureU1 },
+  },
+});
+var boxU1 = new THREE.Mesh(boxGeometryU1, boxMaterialU1);
+boxU1.position.set(-0.4, -0.2, 57);
+
+// BoxU2
+const textureU2 = textureLoader.load(Box2U);
+var boxGeometryU2 = new THREE.BoxGeometry(0.4, 0.3, 0);
+var boxMaterialU2 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureU2 },
+  },
+});
+var boxU2 = new THREE.Mesh(boxGeometryU2, boxMaterialU2);
+boxU2.position.set(0.4, -0.2, 56);
+// BoxU3
+const textureU3 = textureLoader.load(Box3U);
+var boxGeometryU3 = new THREE.BoxGeometry(0.4, 0.3, 0);
+var boxMaterialU3 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureU3 },
+  },
+});
+var boxU3 = new THREE.Mesh(boxGeometryU3, boxMaterialU3);
+boxU3.position.set(-0.4, 0.4, 55);
+
+// BoxU4
+const textureU4 = textureLoader.load(Box4U);
+var boxGeometryU4 = new THREE.BoxGeometry(0.4, 0.3, 0);
+var boxMaterialU4 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureU4 },
+  },
+});
+var boxU4 = new THREE.Mesh(boxGeometryU4, boxMaterialU4);
+boxU4.position.set(0.4, 0.4, 54);
+// BoxU5
+const textureU5 = textureLoader.load(Box5U);
+var boxGeometryU5 = new THREE.BoxGeometry(0.4, 0.3, 0);
+var boxMaterialU5 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureU5 },
+  },
+});
+var boxU5 = new THREE.Mesh(boxGeometryU5, boxMaterialU5);
+boxU5.position.set(-0.4, -0.2, 53);
+
+// BoxU6
+const textureU6 = textureLoader.load(Box6U);
+var boxGeometryU6 = new THREE.BoxGeometry(0.4, 0.3, 0);
+var boxMaterialU6 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureU6 },
+  },
+});
+var boxU6 = new THREE.Mesh(boxGeometryU6, boxMaterialU6);
+boxU6.position.set(0.4, -0.2, 52);
+// BoxU7
+const textureU7 = textureLoader.load(Box7U);
+var boxGeometryU7 = new THREE.BoxGeometry(0.4, 0.3, 0);
+var boxMaterialU7 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureU7 },
+  },
+});
+var boxU7 = new THREE.Mesh(boxGeometryU7, boxMaterialU7);
+boxU7.position.set(-0.4, 0.4, 51);
+
+// BoxU8
+const textureU8 = textureLoader.load(Box8U);
+var boxGeometryU8 = new THREE.BoxGeometry(0.4, 0.3, 0);
+var boxMaterialU8 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: textureU8 },
+  },
+});
+var boxU8 = new THREE.Mesh(boxGeometryU8, boxMaterialU8);
+boxU8.position.set(0.4, 0.4, 50);
+
+scene.add(boxU1, boxU2, boxU3, boxU4, boxU5, boxU6, boxU7, boxU8);
+
+//===================================================== Create a point light in our scene
+var light = new THREE.PointLight(new THREE.Color("white"), 1, 100);
+scene.add(light);
+
+// const orbitControls = new OrbitControls(camera, canvas);
+// orbitControls.enableDamping = true;
+//===================================================== Animate
+// var percentage = 0;
+// Initialize your variables
+var percentage = 0.002; // Initial position along the path
+var delayCall = 0;
+// Add an event listener for the scroll event
+const boxAPath =
+  "M18.24 48.64C10.24 48.64 4.8 45.248 0.832 40.128L6.976 35.328C9.728 39.744 13.44 42.112 18.176 42.112C23.36 42.112 26.624 38.784 26.624 34.624C26.624 29.824 21.504 28.288 16.128 26.56C9.792 24.512 2.944 21.952 2.944 13.376C2.944 6.272 9.28 0.639999 17.92 0.639999C25.024 0.639999 29.44 3.392 33.024 7.552L27.328 11.776C25.216 8.512 22.08 6.784 17.92 6.784C13.184 6.784 10.112 9.6 10.112 13.248C10.112 17.728 15.04 19.2 20.416 20.992C26.816 23.168 33.792 25.92 33.792 34.624C33.792 41.792 27.904 48.64 18.24 48.64ZM62.2385 48.64C48.9905 48.64 38.3025 37.888 38.3025 24.64C38.3025 11.392 48.9905 0.639999 62.2385 0.639999C75.5505 0.639999 86.2385 11.392 86.2385 24.64C86.2385 37.888 75.5505 48.64 62.2385 48.64ZM62.2385 41.856C71.8385 41.856 79.2625 34.112 79.2625 24.64C79.2625 15.168 71.8385 7.36 62.2385 7.36C52.7025 7.36 45.2785 15.168 45.2785 24.64C45.2785 34.112 52.7025 41.856 62.2385 41.856ZM115.365 48.64C101.541 48.64 91.365 37.888 91.365 24.64C91.365 11.008 101.989 0.639999 115.365 0.639999C124.197 0.639999 131.877 5.376 136.037 12.416L129.957 16.192C127.077 10.816 121.957 7.36 115.365 7.36C105.637 7.36 98.341 15.04 98.341 24.64C98.341 34.112 105.637 41.792 115.301 41.792C122.533 41.792 127.717 37.824 130.405 32.192L136.677 35.52C132.645 43.328 124.901 48.64 115.365 48.64ZM141.845 48V1.28H148.821V48H141.845ZM154.411 48L171.563 1.28H178.731L195.883 48H188.651L185.003 38.016H165.291L161.707 48H154.411ZM175.147 10.88L167.723 31.36H182.571L175.147 10.88ZM201.022 48V1.28H207.998V41.344H226.878V48H201.022ZM249.272 48V1.28H256.184L272.056 23.232L288.44 1.28H295.032V48H288.12V12.416L271.928 34.24L256.248 12.928V48H249.272ZM302.209 48V1.28H330.241V7.872H309.185V21.248H330.241V27.84H309.185V41.344H330.241V48H302.209ZM336.772 48V1.28H349.7C364.868 1.28 374.212 11.392 374.212 24.64C374.212 37.952 363.972 48 349.956 48H336.772ZM348.996 7.68H343.748V41.536H349.252C360.004 41.536 367.172 34.24 367.172 24.64C367.172 14.848 360.708 7.68 348.996 7.68ZM380.47 48V1.28H387.446V48H380.47ZM393.036 48L410.188 1.28H417.356L434.508 48H427.276L423.628 38.016H403.916L400.332 48H393.036ZM413.772 10.88L406.348 31.36H421.196L413.772 10.88Z";
+const boxBPath =
+  "M0.584 48V1.28H15.944C25.864 1.28 32.84 8.448 32.84 17.664C32.84 26.816 25.864 34.048 15.88 34.048H7.56V48H0.584ZM15.432 7.68H7.56V27.584H15.432C21.832 27.584 25.864 23.232 25.864 17.664C25.864 12.032 21.832 7.68 15.432 7.68ZM66.9925 48V27.84H45.8725V48H38.8965V1.28H45.8725V21.184H66.9925V1.28H73.9045V48H66.9925ZM103.676 48.64C90.428 48.64 79.74 37.888 79.74 24.64C79.74 11.392 90.428 0.639999 103.676 0.639999C116.988 0.639999 127.676 11.392 127.676 24.64C127.676 37.888 116.988 48.64 103.676 48.64ZM103.676 41.856C113.276 41.856 120.7 34.112 120.7 24.64C120.7 15.168 113.276 7.36 103.676 7.36C94.14 7.36 86.716 15.168 86.716 24.64C86.716 34.112 94.14 41.856 103.676 41.856ZM141.115 48V7.808H127.867V1.28H161.275V7.808H148.027V48H141.115ZM185.301 48.64C172.053 48.64 161.365 37.888 161.365 24.64C161.365 11.392 172.053 0.639999 185.301 0.639999C198.613 0.639999 209.301 11.392 209.301 24.64C209.301 37.888 198.613 48.64 185.301 48.64ZM185.301 41.856C194.901 41.856 202.325 34.112 202.325 24.64C202.325 15.168 194.901 7.36 185.301 7.36C175.765 7.36 168.341 15.168 168.341 24.64C168.341 34.112 175.765 41.856 185.301 41.856ZM238.684 48.64C224.604 48.64 214.428 37.696 214.428 24.64C214.428 11.328 224.604 0.639999 238.62 0.639999C247.964 0.639999 255.58 5.504 259.612 12.672L253.532 16.32C250.524 10.688 245.34 7.296 238.62 7.296C228.508 7.296 221.404 15.168 221.404 24.64C221.404 34.176 228.635 41.92 238.684 41.92C247.516 41.92 253.084 36.544 254.556 28.992H237.788V22.4H261.852V24.896C261.852 37.568 253.212 48.64 238.684 48.64ZM267.647 48V1.28H282.175C292.095 1.28 298.687 8 298.687 16.512C298.687 22.72 295.231 28.608 288.575 30.656L299.711 48H291.711L277.631 25.728H281.407C288.383 25.728 291.711 20.8 291.711 16.512C291.711 11.264 288.319 7.744 281.471 7.744H274.623V48H267.647ZM302.974 48L320.126 1.28H327.294L344.446 48H337.214L333.566 38.016H313.854L310.27 48H302.974ZM323.71 10.88L316.286 31.36H331.134L323.71 10.88ZM349.584 48V1.28H364.944C374.864 1.28 381.84 8.448 381.84 17.664C381.84 26.816 374.864 34.048 364.88 34.048H356.56V48H349.584ZM364.432 7.68H356.56V27.584H364.432C370.832 27.584 374.864 23.232 374.864 17.664C374.864 12.032 370.832 7.68 364.432 7.68ZM415.993 48V27.84H394.873V48H387.897V1.28H394.873V21.184H415.993V1.28H422.905V48H415.993ZM443.012 48V25.856L427.844 1.28H435.524L446.468 19.2L457.476 1.28H465.156L449.924 25.92V48H443.012Z";
+const boxCPath =
+  "M0.584 48V1.28H16.392C25.864 1.28 31.752 6.016 31.752 14.016C31.752 18.176 29.896 21.504 26.248 23.552C30.728 25.472 33.224 29.248 33.224 34.496C33.224 43.136 27.016 48 17.48 48H0.584ZM17.16 27.2H7.56V41.6H17.48C22.984 41.6 26.248 38.72 26.248 34.368C26.248 29.952 23.624 27.2 17.16 27.2ZM16.392 7.616H7.56V20.736H16.648C22.28 20.736 24.776 17.92 24.776 14.016C24.776 9.984 21.896 7.616 16.392 7.616ZM39.0215 48V1.28H53.5495C63.4695 1.28 70.0615 8 70.0615 16.512C70.0615 22.72 66.6055 28.608 59.9495 30.656L71.0855 48H63.0855L49.0055 25.728H52.7815C59.7575 25.728 63.0855 20.8 63.0855 16.512C63.0855 11.264 59.6935 7.744 52.8455 7.744H45.9975V48H39.0215ZM74.3485 48L91.5005 1.28H98.6685L115.821 48H108.589L104.941 38.016H85.2285L81.6445 48H74.3485ZM95.0845 10.88L87.6605 31.36H102.509L95.0845 10.88ZM120.959 48V1.28H128.831L152.511 36.608V1.28H159.423V48H152.063L127.935 12.096V48H120.959ZM166.584 48V1.28H179.512C194.68 1.28 204.024 11.392 204.024 24.64C204.024 37.952 193.784 48 179.768 48H166.584ZM178.808 7.68H173.56V41.536H179.064C189.816 41.536 196.984 34.24 196.984 24.64C196.984 14.848 190.52 7.68 178.808 7.68ZM210.282 48V1.28H217.258V48H210.282ZM224.897 48V1.28H232.769L256.449 36.608V1.28H263.361V48H256.001L231.873 12.096V48H224.897ZM293.434 48.64C279.354 48.64 269.178 37.696 269.178 24.64C269.178 11.328 279.354 0.639999 293.37 0.639999C302.714 0.639999 310.33 5.504 314.362 12.672L308.282 16.32C305.274 10.688 300.09 7.296 293.37 7.296C283.258 7.296 276.154 15.168 276.154 24.64C276.154 34.176 283.385 41.92 293.434 41.92C302.266 41.92 307.834 36.544 309.306 28.992H292.538V22.4H316.602V24.896C316.602 37.568 307.962 48.64 293.434 48.64Z";
+const boxDPath =
+  "M16.84 47.64C7.368 47.64 0.456 41.304 0.456 31.256V0.279999H7.432V31.704C7.432 36.888 11.464 41.112 16.776 41.112C22.152 41.112 26.312 36.888 26.312 31.704V0.279999H33.224V31.256C33.224 41.304 26.248 47.64 16.84 47.64ZM40.7195 47V0.279999H47.6955V47H40.7195ZM52.966 47L75.11 0.279999H82.47L60.326 47H52.966ZM103.403 47.64C93.9305 47.64 87.0185 41.304 87.0185 31.256V0.279999H93.9945V31.704C93.9945 36.888 98.0265 41.112 103.339 41.112C108.715 41.112 112.875 36.888 112.875 31.704V0.279999H119.787V31.256C119.787 41.304 112.811 47.64 103.403 47.64ZM154.999 47L143.607 29.08L132.279 47H124.471L139.51 23.256L125.111 0.279999H132.919L143.671 17.176L154.359 0.279999H162.167L147.703 23.064L162.807 47H154.999Z";
+const boxA = document.getElementById("SVGA");
+MorphSVGPlugin.convertToPath(boxA);
+const morphTimeline = gsap
+  .timeline({ paused: true })
+  .to(boxA, { duration: 1, morphSVG: boxBPath, ease: "power1.inOut" })
+  .to(boxA, { duration: 1, morphSVG: boxAPath, ease: "power1.inOut" });
+const svgElement = document.getElementById("SVGMain");
+
+let startY = 0;
+
+document.addEventListener("touchstart", (e) => {
+  startY = e.touches[0].clientY;
+});
+window.addEventListener("wheel", function (event) {
+  if(animationStart){
+    if (event.deltaY > 0) {
+      percentage += 0.0095;
+      scrollCount++;
+    } else if (event.deltaY < 0) {
+      if (percentage > 0.001) {
+        percentage -= 0.0095;
+        scrollCount--;
+      }
+    }
+    // const currentY = event.touches[0].clientY;
+    // if (currentY > startY) {
+    //   percentage += 0.004;
+    //   scrollCount++;
+    //   console.log("Moving downward");
+    // } else if (currentY < startY) {
+    //   percentage -= 0.004;
+    //   scrollCount--;
+    //   console.log("Moving upward");
+    // }
+    console.log("scrollCount:", scrollCount);
+    
+  
+    if (scrollCount > -2 && scrollCount < 25) {
+      if (delayCall == 0) {
+       
+        svgElement.setAttribute("viewBox", "0 0 435 49");
+  
+        gsap.to(boxA, {
+          morphSVG: boxAPath,
+          duration: 0.3,
+          ease: "power1.inOut",
+        });
+        delayCall = 1;
+      }
+    } else if (scrollCount >= 25 && scrollCount < 55) {
+      if (delayCall == 0) {
+        svgElement.setAttribute("viewBox", "0 0 466 49");
+        gsap.to(boxA, {
+          morphSVG: boxBPath,
+          duration: 0.3,
+          ease: "power1.inOut",
+        });
+        delayCall = 1;
+      }
+    } else if (scrollCount >= 55 && scrollCount < 72) {
+      if (delayCall == 0) {
+        svgElement.setAttribute("viewBox", "0 0 317 49");
+        gsap.to(boxA, {
+          morphSVG: boxCPath,
+          duration: 0.3,
+          ease: "power1.inOut",
+        });
+        delayCall = 1;
+      }
+    } else if (scrollCount >= 72 && scrollCount < 130) {
+      if (delayCall == 0) {
+        svgElement.setAttribute("viewBox", "0 0 163 49");
+        gsap.to(boxA, {
+          morphSVG: boxDPath,
+          duration: 0.3,
+          ease: "power1.inOut",
+        });
+        delayCall = 1;
+        
+      }
+    }
+    setTimeout(() => {
+      delayCall = 0;
+    }, 1000);
+  
+    // Get the camera position and lookAt based on the updated percentage
+    var p1 = path.getPointAt(percentage);
+    var p2 = path.getPointAt(percentage);
+    light.position.set(p2.x, p2.y, p2.z);
+  
+    if (event.deltaY < 0) {
+      gsap.to(camera.position, { z: p1.z, duration: 2 });
+    } else {
+      gsap.to(camera.position, { z: p1.z, duration: 2 });
+    }
+  }
+});
+
+window.addEventListener("mousemove", function (e) {
+  const x = e.clientX * 0.0003 - 0.3;
+  const y = e.clientY * 0.0003 - 0.25;
+  gsap.to(camera.position, { x: x, y: -y, duration: 2 });
+});
+var p1 = path.getPointAt(0 % 1);
+// camera.position.set(p1.x, p1.y, p1.z);
+
+function animate() {
+  renderer.render(scene, camera);
+  requestAnimationFrame(animate);
+}
+
+animate();
+const axesHelper = new THREE.AxesHelper(50); // Adjust the size as needed
+// scene.add(axesHelper);
+
+const animation = gsap.from(".element", {
+  opacity: 0,
+  y: 100,
+  duration: 1,
+  paused: true, // Animation is initially paused
+});
+
+ScrollTrigger.create({
+  trigger: ".canvasParent",
+  start: "top 40%",
+  end: "bottom 100%",
+  markers: true,
+  animation,
+  onEnter: () => {
+    // document.body.style.overflow = 'hidden';
+    animationStart=true;
+    console.log("Element entered the viewport");
+  },
+  onLeave: () => {
+    // document.body.style.overflow = 'auto'
+    console.log("Element left the viewport");
+    animationStart=false;
+  },
+  onToggle: ({ isActive }) => {
+    isActive ? (animationStart=true) :(animationStart=false);
+  },
+});
