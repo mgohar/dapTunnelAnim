@@ -1,83 +1,66 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
-import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
-import fontface from "./fontface.json";
 import { gsap } from "gsap-trial";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { MorphSVGPlugin } from "gsap-trial/MorphSVGPlugin";
 //===================================================== SOCIAL MEDIA
-import Box1T from "./Assets/image/Portfolio/Social/1.png";
-import Box2T from "./Assets/image/Portfolio/Social/2.png";
-import Box3T from "./Assets/image/Portfolio/Social/3.png";
-import Box4T from "./Assets/image/Portfolio/Social/4.png";
-import Box5T from "./Assets/image/Portfolio/Social/5.png";
-import Box6T from "./Assets/image/Portfolio/Social/6.png";
-import Box7T from "./Assets/image/Portfolio/Social/7.png";
-import Box8T from "./Assets/image/Portfolio/Social/8.png";
-import Box9T from "./Assets/image/Portfolio/Social/9.png";
-import Box10T from "./Assets/image/Portfolio/Social/10.png";
-import Box11T from "./Assets/image/Portfolio/Social/11.png";
-import Box12T from "./Assets/image/Portfolio/Social/12.png";
-import Box13T from "./Assets/image/Portfolio/Social/1.png";
-import Box14T from "./Assets/image/Portfolio/Social/2.png";
-import Box15T from "./Assets/image/Portfolio/Social/3.png";
-import Box16T from "./Assets/image/Portfolio/Social/4.png";
+const Box1T ="https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/1.png"
+const Box2T = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/2.png";
+const Box3T = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/3.png";
+const Box4T = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/4.png";
+const Box5T = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/5.png";
+const Box6T = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/6.png";
+const Box7T = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/7.png";
+const Box8T = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/8.png";
+const Box9T = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/9.png";
+const Box10T= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/10.png";
+const Box11T= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/11.png";
+const Box12T= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/12.png";
+const Box13T= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/1.png";
+const Box14T= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/2.png";
+const Box15T= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/3.png";
+const Box16T= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/4.png";
 //===================================================== PHOTOGRAPHY
-import BoxP1 from "./Assets/image/Portfolio/Photography/1.png";
-import BoxP2 from "./Assets/image/Portfolio/Photography/2.png";
-import BoxP3 from "./Assets/image/Portfolio/Photography/3.png";
-import BoxP4 from "./Assets/image/Portfolio/Photography/4.png";
-import BoxP5 from "./Assets/image/Portfolio/Photography/5.png";
-import BoxP6 from "./Assets/image/Portfolio/Photography/6.png";
-import BoxP7 from "./Assets/image/Portfolio/Photography/7.png";
-import BoxP8 from "./Assets/image/Portfolio/Photography/8.png";
-import BoxP9 from "./Assets/image/Portfolio/Photography/9.png";
-import BoxP10 from "./Assets/image/Portfolio/Photography/10.png";
-import BoxP11 from "./Assets/image/Portfolio/Photography/11.png";
-import BoxP12 from "./Assets/image/Portfolio/Photography/12.png";
-import BoxP13 from "./Assets/image/Portfolio/Photography/13.png";
-import BoxP14 from "./Assets/image/Portfolio/Photography/14.png";
-import BoxP15 from "./Assets/image/Portfolio/Photography/15.png";
-import BoxP16 from "./Assets/image/Portfolio/Photography/16.png";
-import BoxP17 from "./Assets/image/Portfolio/Photography/17.png";
-import BoxP18 from "./Assets/image/Portfolio/Photography/18.png";
-import BoxP19 from "./Assets/image/Portfolio/Photography/19.png";
-import BoxP20 from "./Assets/image/Portfolio/Photography/20.png";
-import BoxP21 from "./Assets/image/Portfolio/Photography/21.png";
-import BoxP22 from "./Assets/image/Portfolio/Photography/22.png";
-import BoxP23 from "./Assets/image/Portfolio/Photography/23.png";
-import BoxP24 from "./Assets/image/Portfolio/Photography/24.png";
-import BoxP25 from "./Assets/image/Portfolio/Photography/25.png";
-import BoxP26 from "./Assets/image/Portfolio/Photography/26.png";
-import BoxP27 from "./Assets/image/Portfolio/Photography/27.png";
-import BoxP28 from "./Assets/image/Portfolio/Photography/28.png";
-import BoxP29 from "./Assets/image/Portfolio/Photography/29.png";
-import BoxP30 from "./Assets/image/Portfolio/Photography/30.png";
-import BoxP31 from "./Assets/image/Portfolio/Photography/31.png";
-import BoxP32 from "./Assets/image/Portfolio/Photography/32.png";
-import BoxP33 from "./Assets/image/Portfolio/Photography/33.png";
-import BoxP34 from "./Assets/image/Portfolio/Photography/34.png";
-import BoxP35 from "./Assets/image/Portfolio/Photography/35.png";
+const BoxP1 = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/1.png";
+const BoxP2 = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/2.png";
+const BoxP3 = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/3.png";
+const BoxP4 = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/4.png";
+const BoxP5 = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/5.png";
+const BoxP6 = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/6.png";
+const BoxP7 = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/7.png";
+const BoxP8 = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/8.png";
+const BoxP9 = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/9.png";
+const BoxP10= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/10.png";
+const BoxP11= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/11.png";
+const BoxP12= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/12.png";
+const BoxP13= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/13.png";
+const BoxP14= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/14.png";
+const BoxP15= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/15.png";
+const BoxP16= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/16.png";
+const BoxP17= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/17.png";
+const BoxP18= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/18.png";
+const BoxP19= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/19.png";
+const BoxP20= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/20.png";
+
 //===================================================== SOCIAL MEDIA
-import Box1B from "./Assets/image/Portfolio/Branding/1.png";
-import Box2B from "./Assets/image/Portfolio/Branding/2.png";
-import Box3B from "./Assets/image/Portfolio/Branding/3.png";
-import Box4B from "./Assets/image/Portfolio/Branding/4.png";
-import Box5B from "./Assets/image/Portfolio/Branding/5.png";
-import Box6B from "./Assets/image/Portfolio/Branding/6.png";
-import Box7B from "./Assets/image/Portfolio/Branding/7.png";
-import Box8B from "./Assets/image/Portfolio/Branding/8.png";
+const Box1B = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/1.png";
+const Box2B = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/2.png";
+const Box3B = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/3.png";
+const Box4B = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/4.png";
+const Box5B = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/5.png";
+const Box6B = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/6.png";
+const Box7B = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/7.png";
+const Box8B = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/8.png";
 //===================================================== UIUX
-import Box1U from "./Assets/image/Portfolio/UIUX/1.png";
-import Box2U from "./Assets/image/Portfolio/UIUX/2.png";
-import Box3U from "./Assets/image/Portfolio/UIUX/3.png";
-import Box4U from "./Assets/image/Portfolio/UIUX/4.png";
-import Box5U from "./Assets/image/Portfolio/UIUX/5.png";
-import Box6U from "./Assets/image/Portfolio/UIUX/6.png";
-import Box7U from "./Assets/image/Portfolio/UIUX/7.png";
-import Box8U from "./Assets/image/Portfolio/UIUX/8.png";
+const Box1U = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/UIUX/1.png";
+const Box2U = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/UIUX/2.png";
+const Box3U = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/UIUX/3.png";
+const Box4U = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/UIUX/4.png";
+const Box5U = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/UIUX/5.png";
+const Box6U = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/UIUX/6.png";
+const Box7U = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/UIUX/7.png";
+const Box8U = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/UIUX/8.png";
 //===================================================== Shaders
 const vertexShader = `
   varying float vDistance;
@@ -97,7 +80,7 @@ const fragmentShader = `
   uniform sampler2D imageTexture;
 
   void main() {
-    float opacity = clamp(2.6 - (vDistance / maxDistance), 0.0, 1.0);
+    float opacity = clamp(2.4 - (vDistance / 2.0), 0.0, 1.0);
     vec4 texColor = texture2D(imageTexture, vUv);
     gl_FragColor = vec4(texColor.rgb, opacity); // Adjust the color as needed
   }
@@ -106,7 +89,6 @@ const fragmentShader = `
 let scrollCount = 0;
 const textContainer = document.querySelector(".bz-animation-title");
 const textureLoader = new THREE.TextureLoader();
-const Fontloader = new FontLoader();
 const gs = gsap.timeline();
 gsap.registerPlugin(MorphSVGPlugin);
 gsap.registerPlugin(ScrollTrigger);
@@ -115,6 +97,7 @@ gsap.registerPlugin(ScrollTrigger);
 let animationStart=false;
 const canvas = document.querySelector(".draw");
 const renderer = new THREE.WebGLRenderer({ canvas });
+// alert(window.innerWidth)
 renderer.setSize(window.innerWidth, window.innerHeight);
 
 //===================================================== Create an empty scene
@@ -127,7 +110,7 @@ var camera = new THREE.PerspectiveCamera(
   0.001,
   1000
 );
-camera.position.z = 400;
+camera.position.z = 150;
 
 //===================================================== resize
 window.addEventListener("resize", function () {
@@ -171,29 +154,28 @@ var tube = new THREE.Mesh(geometry, material);
 tube.matrixAutoUpdate = false; //wont be moving so no need to update
 scene.add(tube);
 
-//===================================================== Font Geomarty
-Fontloader.load(
-  "https://celestialcode.s3.us-west-2.amazonaws.com/Parvarish/fontface.json",
-  function (font) {
-    const fontgeometry = new TextGeometry("2001", {
-      font: font,
-      size: 0.5, // Size of the text
-      height: 0.1, // Extrusion depth
-      curveSegments: 12, // Smoothness of the edges
-    });
-    fontgeometry.center();
 
-    const fontMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    const fontMesh = new THREE.Mesh(fontgeometry, fontMaterial);
-
-    // scene.add(fontMesh);
-  }
-);
 //===================================================== SOCIAL MEDAI
-// Box1
+// Create a video element DAPvideo
+var video = document.createElement('video');
+var videoTexture = new THREE.VideoTexture(video);
+video.src = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP+Website+Showreel.mp4";
+
+video.crossOrigin = "anonymous";
+video.muted = 'muted';
+video.loop = true;
+video.preload = "auto";
+
 const texture1 = textureLoader.load(Box1T);
 var boxGeometry1 = new THREE.BoxGeometry(0.3, 0.3, 0);
-var boxMaterial1 = new THREE.MeshBasicMaterial({ map: texture1 });
+var boxMaterial1 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: texture1 },
+  },
+});
 var box1 = new THREE.Mesh(boxGeometry1, boxMaterial1);
 box1.position.set(-0.4, -0.2, 98);
 
@@ -203,22 +185,44 @@ var boxGeometry2 = new THREE.BoxGeometry(0.3, 0.35, 0);
 var boxMaterial2 = new THREE.MeshBasicMaterial({ map: texture2 });
 var box2 = new THREE.Mesh(boxGeometry2, boxMaterial2);
 box2.position.set(0.4, -0.2, 97);
+video.play();
 // Box3
 const texture3 = textureLoader.load(Box3T);
 var boxGeometry3 = new THREE.BoxGeometry(0.3, 0.35, 0);
-var boxMaterial3 = new THREE.MeshBasicMaterial({ map: texture3 });
+var boxMaterial3 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: texture3 },
+  },
+});
 var box3 = new THREE.Mesh(boxGeometry3, boxMaterial3);
 box3.position.set(-0.4, 0.4, 96);
 // Box4
 const texture4 = textureLoader.load(Box4T);
 var boxGeometry4 = new THREE.BoxGeometry(0.3, 0.3, 0);
-var boxMaterial4 = new THREE.MeshBasicMaterial({ map: texture4 });
+var boxMaterial4 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: texture4 },
+  },
+});
 var box4 = new THREE.Mesh(boxGeometry4, boxMaterial4);
 box4.position.set(0.4, 0.4, 95);
 // Box5
 const texture5 = textureLoader.load(Box5T);
 var boxGeometry5 = new THREE.BoxGeometry(0.3, 0.3, 0);
-var boxMaterial5 = new THREE.MeshBasicMaterial({ map: texture5 });
+var boxMaterial5 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: texture5 },
+  },
+});
 var box5 = new THREE.Mesh(boxGeometry5, boxMaterial5);
 box5.position.set(-0.5, -0.3, 94);
 
@@ -243,7 +247,7 @@ var boxMaterial7 = new THREE.ShaderMaterial({
   fragmentShader,
   uniforms: {
     maxDistance: { value: 3 }, // Adjust the maximum distance
-    imageTexture: { value: texture7 },
+    imageTexture: { value: videoTexture },
   },
 });
 var box7 = new THREE.Mesh(boxGeometry7, boxMaterial7);
@@ -608,7 +612,7 @@ var boxMaterialP17 = new THREE.ShaderMaterial({
 var boxP17 = new THREE.Mesh(boxGeometryP17, boxMaterialP17);
 boxP17.position.set(-0.4, -0.2, 70);
 // BoxP18
-const textureP18 = textureLoader.load(BoxP14);
+const textureP18 = textureLoader.load(BoxP18);
 var boxGeometryP18 = new THREE.BoxGeometry(0.3, 0.3, 0);
 var boxMaterialP18 = new THREE.ShaderMaterial({
   vertexShader,
@@ -726,7 +730,7 @@ var boxB4 = new THREE.Mesh(boxGeometryB4, boxMaterialB4);
 boxB4.position.set(0.4, 0.4, 62);
 // BoxB5
 const textureB5 = textureLoader.load(Box5B);
-var boxGeometryB5 = new THREE.BoxGeometry(0.3, 0.3, 0);
+var boxGeometryB5 = new THREE.BoxGeometry(0.3, 0.4, 0);
 var boxMaterialB5 = new THREE.ShaderMaterial({
   vertexShader,
   fragmentShader,
@@ -740,7 +744,7 @@ boxB5.position.set(-0.4, -0.2, 61);
 
 // BoxB6
 const textureB6 = textureLoader.load(Box6B);
-var boxGeometryB6 = new THREE.BoxGeometry(0.3, 0.35, 0);
+var boxGeometryB6 = new THREE.BoxGeometry(0.3, 0.4, 0);
 var boxMaterialB6 = new THREE.ShaderMaterial({
   vertexShader,
   fragmentShader,
@@ -1038,19 +1042,22 @@ ScrollTrigger.create({
   trigger: ".canvasParent",
   start: "top 40%",
   end: "bottom 100%",
-  markers: true,
+  markers: false,
   animation,
   onEnter: () => {
     // document.body.style.overflow = 'hidden';
     animationStart=true;
     console.log("Element entered the viewport");
+    const SVGMain = document.getElementById("SVGMain");
+    gsap.to(SVGMain, { opacity:1,scale:1, duration: 2 });
   },
   onLeave: () => {
     // document.body.style.overflow = 'auto'
     console.log("Element left the viewport");
     animationStart=false;
+    gsap.to(SVGMain, { opacity:0,scale:0, duration: 2 });
   },
   onToggle: ({ isActive }) => {
-    isActive ? (animationStart=true) :(animationStart=false);
+    isActive ? (animationStart=true,gsap.to(SVGMain, { opacity:1,scale:1, duration: 2 })) :(animationStart=false,gsap.to(SVGMain, { opacity:0,scale:0, duration: 2 }));
   },
 });
