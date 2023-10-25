@@ -5,46 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>1 - Introduction to shaders</title>
     <style>
+      html {
+        scroll-behavior: smooth;
+      }
       body {
         margin: 0px;
         overflow-x: hidden;
+        scroll-behavior: smooth;
       }
       .bz-animation-container {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
-        position: sticky;
+        position: absolute;
         top: 0px;
         width: 100vw;
         z-index: 99999;
+        /* display: none; */
+      }
+      .canvasParent{
+        position: relative;
       }
       .bz-animation-container h1 {
         font-size: 50px;
         font-family: cursive;
       }
-      .draw{
-        position: sticky;
+      .draw {
+        /* position: sticky;
         top: 0px;
         height: 100vh;
-        margin-top: -100vh;
+        margin-top: -100vh; */
       }
-      #SVGMain{
+      #SVGMain {
         opacity: 0;
         transform: scale(0);
       }
-    </style>  
+      /* Hide scrollbar for Chrome and Safari */
+      ::-webkit-scrollbar {
+        width: 0;
+      }
+
+      /* Hide scrollbar thumb for Chrome and Safari */
+      ::-webkit-scrollbar-thumb {
+        background: transparent;
+      }
+    </style>
   </head>
   <!-- <body>
     <canvas class="draw"></canvas>
   </body> -->
 
   <body>
-
     <div style="background-color: black; height: 100vh"></div>
     <div>
-      
-      <div class="canvasParent" style="height: 6500px;">
+      <div class="canvasParent">
         <div class="bz-animation-container">
           <svg
             id="SVGMain"
@@ -64,10 +79,24 @@
         <canvas class="draw"></canvas>
       </div>
     </div>
-    <div style="background-color: white; height: 100vh"></div>
+    <div
+      class="sectionC"
+      style="background-color: rgb(255, 255, 255); height: 100vh"
+    ></div>
 
     <script>
-      
+     setTimeout(() => {
+      let body = this.document.querySelector("body");
+      window.scrollTo(0, body.offsetTop);
+     }, 1500);
+     // Check for the presence of touch events
+      if ('ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0) {
+          // The device supports touch input, so it's likely a touchpad or touchscreen
+          console.log('Touch input detected');
+      } else {
+          // No touch input events detected, so it's likely a mouse
+          console.log('Mouse input detected');
+      }
     </script>
   </body>
 </html>

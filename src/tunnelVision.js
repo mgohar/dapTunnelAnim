@@ -1103,13 +1103,14 @@ document.addEventListener("touchstart", (e) => {
   startY = e.touches[0].clientY;
 });
 window.addEventListener("wheel", function (event) {
+  // console.log("Wheel",event.deltaY,animationStart);
   if (animationStart) {
     if (event.deltaY > 0) {
-      percentage += 0.0095;
+      percentage += 0.001;
       scrollCount++;
     } else if (event.deltaY < 0) {
-      if (percentage > 0.001) {
-        percentage -= 0.0095;
+      if (percentage > 0.005) {
+        percentage -= 0.001;
         scrollCount--;
       }
     }
@@ -1125,7 +1126,7 @@ window.addEventListener("wheel", function (event) {
     // }
     console.log("scrollCount:", scrollCount);
 
-    if (scrollCount > -2 && scrollCount < 25) {
+    if (scrollCount > -2 && scrollCount < 20) {
       if (delayCall == 0) {
         svgElement.setAttribute("viewBox", "0 0 435 49");
         // gsap.to(boxA, {
@@ -1134,35 +1135,57 @@ window.addEventListener("wheel", function (event) {
         //   ease: "power1.inOut",
         // });
         // Modify the path data
+        let canvasParent= this.document.querySelector(".canvasParent");
+        event.deltaY > 0?window.scrollTo(0, canvasParent.offsetTop):null
+        event.deltaY > 0?document.body.style.overflow = 'hidden':document.body.style.overflow = 'auto';
+        
         boxA.setAttribute("d", boxAPath);
         svgElement.appendChild(boxA);
         delayCall = 1;
+        animationStart=true;
       }
-    } else if (scrollCount >= 25 && scrollCount < 55) {
+    } else if (scrollCount >= 20 && scrollCount < 230) {
+      if (delayCall == 0) {
+        svgElement.setAttribute("viewBox", "0 0 435 49");
+        // gsap.to(boxA, {
+        //   morphSVG: boxBPath,
+        //   duration: 0.3,
+        //   ease: "power1.inOut",
+        // });
+        boxA.setAttribute("d", boxAPath);
+        svgElement.appendChild(boxA);
+        delayCall = 1;
+        animationStart=true;
+        event.deltaY > 0?document.body.style.overflow = 'hidden':null;
+      }
+    } else if (scrollCount >= 230 && scrollCount < 550) {
       if (delayCall == 0) {
         svgElement.setAttribute("viewBox", "0 0 466 49");
         // gsap.to(boxA, {
-        //   morphSVG: boxBPath,
+        //   morphSVG: boxCPath,
         //   duration: 0.3,
         //   ease: "power1.inOut",
         // });
         boxA.setAttribute("d", boxBPath);
         svgElement.appendChild(boxA);
         delayCall = 1;
+        animationStart=true;
+        event.deltaY > 0?document.body.style.overflow = 'hidden':null;
       }
-    } else if (scrollCount >= 55 && scrollCount < 72) {
+    } else if (scrollCount >= 550 && scrollCount < 690) {
       if (delayCall == 0) {
         svgElement.setAttribute("viewBox", "0 0 317 49");
         // gsap.to(boxA, {
-        //   morphSVG: boxCPath,
+        //   morphSVG: boxDPath,
         //   duration: 0.3,
         //   ease: "power1.inOut",
         // });
         boxA.setAttribute("d", boxCPath);
         svgElement.appendChild(boxA);
         delayCall = 1;
+        animationStart=true;
       }
-    } else if (scrollCount >= 72 && scrollCount < 85) {
+    }else if (scrollCount >= 690 && scrollCount < 820) {
       if (delayCall == 0) {
         svgElement.setAttribute("viewBox", "0 0 163 49");
         // gsap.to(boxA, {
@@ -1173,8 +1196,9 @@ window.addEventListener("wheel", function (event) {
         boxA.setAttribute("d", boxDPath);
         svgElement.appendChild(boxA);
         delayCall = 1;
+        animationStart=true;
       }
-    }else if (scrollCount >= 85 && scrollCount < 130) {
+    }else if (scrollCount >= 821 && scrollCount < 880) {
       if (delayCall == 0) {
         svgElement.setAttribute("viewBox", "0 0 441 49");
         // gsap.to(boxA, {
@@ -1185,7 +1209,13 @@ window.addEventListener("wheel", function (event) {
         boxA.setAttribute("d", boxEPath);
         svgElement.appendChild(boxA);
         delayCall = 1;
+        animationStart=true;
       }
+    }else if (scrollCount >= 881) {
+      let canvasParent= this.document.querySelector(".canvasParent");
+      event.deltaY<0?window.scrollTo(0, canvasParent.offsetTop):null
+      event.deltaY > 0?document.body.style.overflow = 'auto':document.body.style.overflow = 'hidden';
+      // console.log("Over_____________________");
     }
     setTimeout(() => {
       delayCall = 0;
@@ -1230,28 +1260,39 @@ const animation = gsap.from(".element", {
 
 ScrollTrigger.create({
   trigger: ".canvasParent",
-  start: "top 40%",
-  end: "bottom 100%",
-  markers: false,
+  start: "top 5%",
+  end: "bottom 70%",
+  markers: true,
   animation,
   onEnter: () => {
-    // document.body.style.overflow = 'hidden';
+    
     animationStart = true;
-    console.log("Element entered the viewport");
+    // console.log("Element entered the viewport");
     const SVGMain = document.getElementById("SVGMain");
     gsap.to(SVGMain, { opacity: 1, scale: 1, duration: 2 });
+    const body = document.querySelector("body");
+   
   },
   onLeave: () => {
     // document.body.style.overflow = 'auto'
-    console.log("Element left the viewport");
+    // console.log("Element left the viewport");
     animationStart = false;
     gsap.to(SVGMain, { opacity: 0, scale: 0, duration: 2 });
   },
   onToggle: ({ isActive }) => {
-    isActive
-      ? ((animationStart = true),
-        gsap.to(SVGMain, { opacity: 1, scale: 1, duration: 2 }))
-      : ((animationStart = false),
-        gsap.to(SVGMain, { opacity: 0, scale: 0, duration: 2 }));
+    console.log("Active:",isActive);
+    if(isActive){
+      
+      gsap.to(SVGMain, { opacity: 1, scale: 1, duration: 2 });
+      animationStart = true;
+      // document.body.style.overflow = 'hidden'
+    }else{
+      animationStart = false;
+      gsap.to(SVGMain, { opacity: 0, scale: 0, duration: 2 });
+      // document.body.style.overflow = 'auto'
+    }
+     
   },
 });
+
+
