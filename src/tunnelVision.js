@@ -1,66 +1,118 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { gsap } from "gsap-trial";
+import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import { MorphSVGPlugin } from "gsap-trial/MorphSVGPlugin";
+// import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
 //===================================================== SOCIAL MEDIA
-const Box1T ="https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/1.png"
-const Box2T = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/2.png";
-const Box3T = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/3.png";
-const Box4T = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/4.png";
-const Box5T = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/5.png";
-const Box6T = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/6.png";
-const Box7T = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/7.png";
-const Box8T = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/8.png";
-const Box9T = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/9.png";
-const Box10T= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/10.png";
-const Box11T= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/11.png";
-const Box12T= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/12.png";
-const Box13T= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/1.png";
-const Box14T= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/2.png";
-const Box15T= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/3.png";
-const Box16T= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/4.png";
+const Box1T =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/1.png";
+const Box2T =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/2.png";
+const Box3T =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/3.png";
+const Box4T =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/4.png";
+const Box5T =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/5.png";
+const Box6T =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/6.png";
+const Box7T =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/7.png";
+const Box8T =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/8.png";
+const Box9T =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/9.png";
+const Box10T =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/10.png";
+const Box11T =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/11.png";
+const Box12T =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/12.png";
+const Box13T =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/1.png";
+const Box14T =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/2.png";
+const Box15T =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/3.png";
+const Box16T =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/4.png";
 //===================================================== PHOTOGRAPHY
-const BoxP1 = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/1.png";
-const BoxP2 = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/2.png";
-const BoxP3 = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/3.png";
-const BoxP4 = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/4.png";
-const BoxP5 = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/5.png";
-const BoxP6 = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/6.png";
-const BoxP7 = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/7.png";
-const BoxP8 = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/8.png";
-const BoxP9 = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/9.png";
-const BoxP10= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/10.png";
-const BoxP11= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/11.png";
-const BoxP12= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/12.png";
-const BoxP13= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/13.png";
-const BoxP14= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/14.png";
-const BoxP15= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/15.png";
-const BoxP16= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/16.png";
-const BoxP17= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/17.png";
-const BoxP18= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/18.png";
-const BoxP19= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/19.png";
-const BoxP20= "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/20.png";
+const BoxP1 =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/1.png";
+const BoxP2 =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/2.png";
+const BoxP3 =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/3.png";
+const BoxP4 =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/4.png";
+const BoxP5 =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/5.png";
+const BoxP6 =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/6.png";
+const BoxP7 =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/7.png";
+const BoxP8 =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/8.png";
+const BoxP9 =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/9.png";
+const BoxP10 =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/10.png";
+const BoxP11 =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/11.png";
+const BoxP12 =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/12.png";
+const BoxP13 =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/13.png";
+const BoxP14 =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/14.png";
+const BoxP15 =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/15.png";
+const BoxP16 =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/16.png";
+const BoxP17 =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/17.png";
+const BoxP18 =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/18.png";
+const BoxP19 =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/19.png";
+const BoxP20 =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/20.png";
 
 //===================================================== SOCIAL MEDIA
-const Box1B = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/1.png";
-const Box2B = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/2.png";
-const Box3B = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/3.png";
-const Box4B = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/4.png";
-const Box5B = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/5.png";
-const Box6B = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/6.png";
-const Box7B = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/7.png";
-const Box8B = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/8.png";
+const Box1B =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/1.png";
+const Box2B =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/2.png";
+const Box3B =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/3.png";
+const Box4B =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/4.png";
+const Box5B =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/5.png";
+const Box6B =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/6.png";
+const Box7B =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/7.png";
+const Box8B =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/8.png";
 //===================================================== UIUX
-const Box1U = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/UIUX/1.png";
-const Box2U = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/UIUX/2.png";
-const Box3U = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/UIUX/3.png";
-const Box4U = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/UIUX/4.png";
-const Box5U = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/UIUX/5.png";
-const Box6U = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/UIUX/6.png";
-const Box7U = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/UIUX/7.png";
-const Box8U = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/UIUX/8.png";
+const Box1U =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/UIUX/1.png";
+const Box2U =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/UIUX/2.png";
+const Box3U =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/UIUX/3.png";
+const Box4U =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/UIUX/4.png";
+const Box5U =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/UIUX/5.png";
+const Box6U =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/UIUX/6.png";
+const Box7U =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/UIUX/7.png";
+const Box8U =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/UIUX/8.png";
 //===================================================== Shaders
 const vertexShader = `
   varying float vDistance;
@@ -90,11 +142,11 @@ let scrollCount = 0;
 const textContainer = document.querySelector(".bz-animation-title");
 const textureLoader = new THREE.TextureLoader();
 const gs = gsap.timeline();
-gsap.registerPlugin(MorphSVGPlugin);
+// gsap.registerPlugin(MorphSVGPlugin);
 gsap.registerPlugin(ScrollTrigger);
 
 //===================================================== Create a WebGL renderer
-let animationStart=false;
+let animationStart = false;
 const canvas = document.querySelector(".draw");
 const renderer = new THREE.WebGLRenderer({ canvas });
 // alert(window.innerWidth)
@@ -154,18 +206,7 @@ var tube = new THREE.Mesh(geometry, material);
 tube.matrixAutoUpdate = false; //wont be moving so no need to update
 scene.add(tube);
 
-
 //===================================================== SOCIAL MEDAI
-// Create a video element DAPvideo
-var video = document.createElement('video');
-var videoTexture = new THREE.VideoTexture(video);
-video.src = "https://celestialcode.s3.us-west-2.amazonaws.com/DAP+Website+Showreel.mp4";
-
-video.crossOrigin = "anonymous";
-video.muted = 'muted';
-video.loop = true;
-video.preload = "auto";
-
 const texture1 = textureLoader.load(Box1T);
 var boxGeometry1 = new THREE.BoxGeometry(0.3, 0.3, 0);
 var boxMaterial1 = new THREE.ShaderMaterial({
@@ -185,7 +226,7 @@ var boxGeometry2 = new THREE.BoxGeometry(0.3, 0.35, 0);
 var boxMaterial2 = new THREE.MeshBasicMaterial({ map: texture2 });
 var box2 = new THREE.Mesh(boxGeometry2, boxMaterial2);
 box2.position.set(0.4, -0.2, 97);
-video.play();
+
 // Box3
 const texture3 = textureLoader.load(Box3T);
 var boxGeometry3 = new THREE.BoxGeometry(0.3, 0.35, 0);
@@ -247,7 +288,7 @@ var boxMaterial7 = new THREE.ShaderMaterial({
   fragmentShader,
   uniforms: {
     maxDistance: { value: 3 }, // Adjust the maximum distance
-    imageTexture: { value: videoTexture },
+    imageTexture: { value: texture7 },
   },
 });
 var box7 = new THREE.Mesh(boxGeometry7, boxMaterial7);
@@ -391,6 +432,7 @@ scene.add(
 );
 //===================================================== PHOTOGRAPHY
 // BoxP1
+
 const textureP1 = textureLoader.load(BoxP1);
 var boxGeometryP1 = new THREE.BoxGeometry(0.3, 0.3, 0);
 var boxMaterialP1 = new THREE.ShaderMaterial({
@@ -895,7 +937,136 @@ var boxU8 = new THREE.Mesh(boxGeometryU8, boxMaterialU8);
 boxU8.position.set(0.4, 0.4, 50);
 
 scene.add(boxU1, boxU2, boxU3, boxU4, boxU5, boxU6, boxU7, boxU8);
+//===================================================== VIDEOGRAPHY
+// BoxV1
+var videoV1 = document.createElement("video");
+var videoTextureV1 = new THREE.VideoTexture(videoV1);
+videoV1.src =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Video/1.mp4";
+videoV1.crossOrigin = "anonymous";
+videoV1.muted = "muted";
+videoV1.loop = true;
+videoV1.preload = "auto";
+videoV1.play();
+var boxGeometryV1 = new THREE.BoxGeometry(0.3, 0.45, 0);
+var boxMaterialV1 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: videoTextureV1 },
+  },
+});
+var boxV1 = new THREE.Mesh(boxGeometryV1, boxMaterialV1);
+boxV1.position.set(-0.4, -0.2, 49);
 
+// BoxV2
+var videoV2 = document.createElement("video");
+var videoTextureV2 = new THREE.VideoTexture(videoV2);
+videoV2.src =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Video/2.mp4";
+videoV2.crossOrigin = "anonymous";
+videoV2.muted = "muted";
+videoV2.loop = true;
+videoV2.preload = "auto";
+videoV2.play();
+var boxGeometryV2 = new THREE.BoxGeometry(0.3, 0.45, 0);
+var boxMaterialV2 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: videoTextureV2 },
+  },
+});
+var boxV2 = new THREE.Mesh(boxGeometryV2, boxMaterialV2);
+boxV2.position.set(0.4, -0.2, 48);
+// BoxV3
+var videoV3 = document.createElement("video");
+var videoTextureV3 = new THREE.VideoTexture(videoV3);
+videoV3.src =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Video/3.mp4";
+videoV3.crossOrigin = "anonymous";
+videoV3.muted = "muted";
+videoV3.loop = true;
+videoV3.preload = "auto";
+videoV3.play();
+var boxGeometryV3 = new THREE.BoxGeometry(0.3, 0.45, 0);
+var boxMaterialV3 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: videoTextureV3 },
+  },
+});
+var boxV3 = new THREE.Mesh(boxGeometryV3, boxMaterialV3);
+boxV3.position.set(-0.4, 0.4, 47);
+// BoxV4
+var videoV4 = document.createElement("video");
+var videoTextureV4 = new THREE.VideoTexture(videoV4);
+videoV4.src =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Video/4.mp4";
+videoV4.crossOrigin = "anonymous";
+videoV4.muted = "muted";
+videoV4.loop = true;
+videoV4.preload = "auto";
+videoV4.play();
+var boxGeometryV4 = new THREE.BoxGeometry(0.3, 0.45, 0);
+var boxMaterialV4 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: videoTextureV4 },
+  },
+});
+var boxV4 = new THREE.Mesh(boxGeometryV4, boxMaterialV4);
+boxV4.position.set(0.4, 0.4, 46);
+// BoxV5
+var videoV5 = document.createElement("video");
+var videoTextureV5 = new THREE.VideoTexture(videoV5);
+videoV5.src =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Video/5.mp4";
+videoV5.crossOrigin = "anonymous";
+videoV5.muted = "muted";
+videoV5.loop = true;
+videoV5.preload = "auto";
+videoV5.play();
+var boxGeometryV5 = new THREE.BoxGeometry(0.3, 0.45, 0);
+var boxMaterialV5 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: videoTextureV5 },
+  },
+});
+var boxV5 = new THREE.Mesh(boxGeometryV5, boxMaterialV5);
+boxV5.position.set(-0.4, -0.2, 45);
+
+// BoxV2
+var videoV6 = document.createElement("video");
+var videoTextureV6 = new THREE.VideoTexture(videoV6);
+videoV6.src =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Video/2.mp4";
+videoV6.crossOrigin = "anonymous";
+videoV6.muted = "muted";
+videoV6.loop = true;
+videoV6.preload = "auto";
+videoV6.play();
+var boxGeometryV6 = new THREE.BoxGeometry(0.3, 0.45, 0);
+var boxMaterialV6 = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    maxDistance: { value: 3 }, // Adjust the maximum distance
+    imageTexture: { value: videoTextureV6 },
+  },
+});
+var boxV6 = new THREE.Mesh(boxGeometryV6, boxMaterialV6);
+boxV6.position.set(0.4, -0.2, 44);
+scene.add(boxV1, boxV2,boxV3, boxV4,boxV5, boxV6);
 //===================================================== Create a point light in our scene
 var light = new THREE.PointLight(new THREE.Color("white"), 1, 100);
 scene.add(light);
@@ -916,8 +1087,10 @@ const boxCPath =
   "M0.584 48V1.28H16.392C25.864 1.28 31.752 6.016 31.752 14.016C31.752 18.176 29.896 21.504 26.248 23.552C30.728 25.472 33.224 29.248 33.224 34.496C33.224 43.136 27.016 48 17.48 48H0.584ZM17.16 27.2H7.56V41.6H17.48C22.984 41.6 26.248 38.72 26.248 34.368C26.248 29.952 23.624 27.2 17.16 27.2ZM16.392 7.616H7.56V20.736H16.648C22.28 20.736 24.776 17.92 24.776 14.016C24.776 9.984 21.896 7.616 16.392 7.616ZM39.0215 48V1.28H53.5495C63.4695 1.28 70.0615 8 70.0615 16.512C70.0615 22.72 66.6055 28.608 59.9495 30.656L71.0855 48H63.0855L49.0055 25.728H52.7815C59.7575 25.728 63.0855 20.8 63.0855 16.512C63.0855 11.264 59.6935 7.744 52.8455 7.744H45.9975V48H39.0215ZM74.3485 48L91.5005 1.28H98.6685L115.821 48H108.589L104.941 38.016H85.2285L81.6445 48H74.3485ZM95.0845 10.88L87.6605 31.36H102.509L95.0845 10.88ZM120.959 48V1.28H128.831L152.511 36.608V1.28H159.423V48H152.063L127.935 12.096V48H120.959ZM166.584 48V1.28H179.512C194.68 1.28 204.024 11.392 204.024 24.64C204.024 37.952 193.784 48 179.768 48H166.584ZM178.808 7.68H173.56V41.536H179.064C189.816 41.536 196.984 34.24 196.984 24.64C196.984 14.848 190.52 7.68 178.808 7.68ZM210.282 48V1.28H217.258V48H210.282ZM224.897 48V1.28H232.769L256.449 36.608V1.28H263.361V48H256.001L231.873 12.096V48H224.897ZM293.434 48.64C279.354 48.64 269.178 37.696 269.178 24.64C269.178 11.328 279.354 0.639999 293.37 0.639999C302.714 0.639999 310.33 5.504 314.362 12.672L308.282 16.32C305.274 10.688 300.09 7.296 293.37 7.296C283.258 7.296 276.154 15.168 276.154 24.64C276.154 34.176 283.385 41.92 293.434 41.92C302.266 41.92 307.834 36.544 309.306 28.992H292.538V22.4H316.602V24.896C316.602 37.568 307.962 48.64 293.434 48.64Z";
 const boxDPath =
   "M16.84 47.64C7.368 47.64 0.456 41.304 0.456 31.256V0.279999H7.432V31.704C7.432 36.888 11.464 41.112 16.776 41.112C22.152 41.112 26.312 36.888 26.312 31.704V0.279999H33.224V31.256C33.224 41.304 26.248 47.64 16.84 47.64ZM40.7195 47V0.279999H47.6955V47H40.7195ZM52.966 47L75.11 0.279999H82.47L60.326 47H52.966ZM103.403 47.64C93.9305 47.64 87.0185 41.304 87.0185 31.256V0.279999H93.9945V31.704C93.9945 36.888 98.0265 41.112 103.339 41.112C108.715 41.112 112.875 36.888 112.875 31.704V0.279999H119.787V31.256C119.787 41.304 112.811 47.64 103.403 47.64ZM154.999 47L143.607 29.08L132.279 47H124.471L139.51 23.256L125.111 0.279999H132.919L143.671 17.176L154.359 0.279999H162.167L147.703 23.064L162.807 47H154.999Z";
+const boxEPath =
+  "M16.856 48L0.536 1.28H7.768L20.376 37.696L32.984 1.28H40.216L23.896 48H16.856ZM45.782 48V1.28H52.758V48H45.782ZM60.3965 48V1.28H73.3245C88.4925 1.28 97.8365 11.392 97.8365 24.64C97.8365 37.952 87.5965 48 73.5805 48H60.3965ZM72.6205 7.68H67.3725V41.536H72.8765C83.6285 41.536 90.7965 34.24 90.7965 24.64C90.7965 14.848 84.3325 7.68 72.6205 7.68ZM103.647 48V1.28H131.679V7.872H110.623V21.248H131.679V27.84H110.623V41.344H131.679V48H103.647ZM161.114 48.64C147.866 48.64 137.178 37.888 137.178 24.64C137.178 11.392 147.866 0.639999 161.114 0.639999C174.426 0.639999 185.114 11.392 185.114 24.64C185.114 37.888 174.426 48.64 161.114 48.64ZM161.114 41.856C170.714 41.856 178.138 34.112 178.138 24.64C178.138 15.168 170.714 7.36 161.114 7.36C151.578 7.36 144.154 15.168 144.154 24.64C144.154 34.112 151.578 41.856 161.114 41.856ZM214.496 48.64C200.416 48.64 190.24 37.696 190.24 24.64C190.24 11.328 200.416 0.639999 214.432 0.639999C223.776 0.639999 231.392 5.504 235.424 12.672L229.344 16.32C226.336 10.688 221.152 7.296 214.432 7.296C204.32 7.296 197.216 15.168 197.216 24.64C197.216 34.176 204.448 41.92 214.496 41.92C223.328 41.92 228.896 36.544 230.368 28.992H213.6V22.4H237.664V24.896C237.664 37.568 229.024 48.64 214.496 48.64ZM243.459 48V1.28H257.987C267.907 1.28 274.499 8 274.499 16.512C274.499 22.72 271.043 28.608 264.387 30.656L275.523 48H267.523L253.443 25.728H257.219C264.195 25.728 267.523 20.8 267.523 16.512C267.523 11.264 264.131 7.744 257.283 7.744H250.435V48H243.459ZM278.786 48L295.938 1.28H303.106L320.258 48H313.026L309.378 38.016H289.666L286.082 48H278.786ZM299.522 10.88L292.098 31.36H306.946L299.522 10.88ZM325.397 48V1.28H340.757C350.677 1.28 357.653 8.448 357.653 17.664C357.653 26.816 350.677 34.048 340.693 34.048H332.373V48H325.397ZM340.245 7.68H332.373V27.584H340.245C346.645 27.584 350.677 23.232 350.677 17.664C350.677 12.032 346.645 7.68 340.245 7.68ZM391.805 48V27.84H370.685V48H363.709V1.28H370.685V21.184H391.805V1.28H398.717V48H391.805ZM418.825 48V25.856L403.657 1.28H411.337L422.281 19.2L433.289 1.28H440.969L425.737 25.92V48H418.825Z";
 const boxA = document.getElementById("SVGA");
-MorphSVGPlugin.convertToPath(boxA);
+// MorphSVGPlugin.convertToPath(boxA);
 const morphTimeline = gsap
   .timeline({ paused: true })
   .to(boxA, { duration: 1, morphSVG: boxBPath, ease: "power1.inOut" })
@@ -930,7 +1103,7 @@ document.addEventListener("touchstart", (e) => {
   startY = e.touches[0].clientY;
 });
 window.addEventListener("wheel", function (event) {
-  if(animationStart){
+  if (animationStart) {
     if (event.deltaY > 0) {
       percentage += 0.0095;
       scrollCount++;
@@ -951,61 +1124,78 @@ window.addEventListener("wheel", function (event) {
     //   console.log("Moving upward");
     // }
     console.log("scrollCount:", scrollCount);
-    
-  
+
     if (scrollCount > -2 && scrollCount < 25) {
       if (delayCall == 0) {
-       
         svgElement.setAttribute("viewBox", "0 0 435 49");
-  
-        gsap.to(boxA, {
-          morphSVG: boxAPath,
-          duration: 0.3,
-          ease: "power1.inOut",
-        });
+        // gsap.to(boxA, {
+        //   morphSVG: boxAPath,
+        //   duration: 0.3,
+        //   ease: "power1.inOut",
+        // });
+        // Modify the path data
+        boxA.setAttribute("d", boxAPath);
+        svgElement.appendChild(boxA);
         delayCall = 1;
       }
     } else if (scrollCount >= 25 && scrollCount < 55) {
       if (delayCall == 0) {
         svgElement.setAttribute("viewBox", "0 0 466 49");
-        gsap.to(boxA, {
-          morphSVG: boxBPath,
-          duration: 0.3,
-          ease: "power1.inOut",
-        });
+        // gsap.to(boxA, {
+        //   morphSVG: boxBPath,
+        //   duration: 0.3,
+        //   ease: "power1.inOut",
+        // });
+        boxA.setAttribute("d", boxBPath);
+        svgElement.appendChild(boxA);
         delayCall = 1;
       }
     } else if (scrollCount >= 55 && scrollCount < 72) {
       if (delayCall == 0) {
         svgElement.setAttribute("viewBox", "0 0 317 49");
-        gsap.to(boxA, {
-          morphSVG: boxCPath,
-          duration: 0.3,
-          ease: "power1.inOut",
-        });
+        // gsap.to(boxA, {
+        //   morphSVG: boxCPath,
+        //   duration: 0.3,
+        //   ease: "power1.inOut",
+        // });
+        boxA.setAttribute("d", boxCPath);
+        svgElement.appendChild(boxA);
         delayCall = 1;
       }
-    } else if (scrollCount >= 72 && scrollCount < 130) {
+    } else if (scrollCount >= 72 && scrollCount < 85) {
       if (delayCall == 0) {
         svgElement.setAttribute("viewBox", "0 0 163 49");
-        gsap.to(boxA, {
-          morphSVG: boxDPath,
-          duration: 0.3,
-          ease: "power1.inOut",
-        });
+        // gsap.to(boxA, {
+        //   morphSVG: boxDPath,
+        //   duration: 0.3,
+        //   ease: "power1.inOut",
+        // });
+        boxA.setAttribute("d", boxDPath);
+        svgElement.appendChild(boxA);
         delayCall = 1;
-        
+      }
+    }else if (scrollCount >= 85 && scrollCount < 130) {
+      if (delayCall == 0) {
+        svgElement.setAttribute("viewBox", "0 0 441 49");
+        // gsap.to(boxA, {
+        //   morphSVG: boxDPath,
+        //   duration: 0.3,
+        //   ease: "power1.inOut",
+        // });
+        boxA.setAttribute("d", boxEPath);
+        svgElement.appendChild(boxA);
+        delayCall = 1;
       }
     }
     setTimeout(() => {
       delayCall = 0;
     }, 1000);
-  
+
     // Get the camera position and lookAt based on the updated percentage
     var p1 = path.getPointAt(percentage);
     var p2 = path.getPointAt(percentage);
     light.position.set(p2.x, p2.y, p2.z);
-  
+
     if (event.deltaY < 0) {
       gsap.to(camera.position, { z: p1.z, duration: 2 });
     } else {
@@ -1046,18 +1236,22 @@ ScrollTrigger.create({
   animation,
   onEnter: () => {
     // document.body.style.overflow = 'hidden';
-    animationStart=true;
+    animationStart = true;
     console.log("Element entered the viewport");
     const SVGMain = document.getElementById("SVGMain");
-    gsap.to(SVGMain, { opacity:1,scale:1, duration: 2 });
+    gsap.to(SVGMain, { opacity: 1, scale: 1, duration: 2 });
   },
   onLeave: () => {
     // document.body.style.overflow = 'auto'
     console.log("Element left the viewport");
-    animationStart=false;
-    gsap.to(SVGMain, { opacity:0,scale:0, duration: 2 });
+    animationStart = false;
+    gsap.to(SVGMain, { opacity: 0, scale: 0, duration: 2 });
   },
   onToggle: ({ isActive }) => {
-    isActive ? (animationStart=true,gsap.to(SVGMain, { opacity:1,scale:1, duration: 2 })) :(animationStart=false,gsap.to(SVGMain, { opacity:0,scale:0, duration: 2 }));
+    isActive
+      ? ((animationStart = true),
+        gsap.to(SVGMain, { opacity: 1, scale: 1, duration: 2 }))
+      : ((animationStart = false),
+        gsap.to(SVGMain, { opacity: 0, scale: 0, duration: 2 }));
   },
 });
