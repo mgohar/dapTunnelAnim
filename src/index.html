@@ -24,7 +24,7 @@
         z-index: 99999;
         /* display: none; */
       }
-      .canvasParent{
+      .canvasParent {
         position: relative;
       }
       .bz-animation-container h1 {
@@ -49,6 +49,17 @@
       /* Hide scrollbar thumb for Chrome and Safari */
       ::-webkit-scrollbar-thumb {
         background: transparent;
+      }
+      .SkipAnim {
+        position: sticky;
+        bottom: 15px;
+        z-index: 999999;
+        background: black;
+        color: white;
+        padding: 10px;
+        border-radius: 6px;
+        left: 93%;
+        cursor: pointer;
       }
     </style>
   </head>
@@ -77,6 +88,7 @@
           </svg>
         </div>
         <canvas class="draw"></canvas>
+        <span class="SkipAnim">Skip Animation</span>
       </div>
     </div>
     <div
@@ -85,17 +97,21 @@
     ></div>
 
     <script>
-     setTimeout(() => {
-      let body = this.document.querySelector("body");
-      window.scrollTo(0, body.offsetTop);
-     }, 1500);
-     // Check for the presence of touch events
-      if ('ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0) {
-          // The device supports touch input, so it's likely a touchpad or touchscreen
-          console.log('Touch input detected');
+      setTimeout(() => {
+        let body = this.document.querySelector("body");
+        window.scrollTo(0, body.offsetTop);
+      }, 1500);
+      // Check for the presence of touch events
+      if (
+        "ontouchstart" in window ||
+        navigator.maxTouchPoints > 0 ||
+        navigator.msMaxTouchPoints > 0
+      ) {
+        // The device supports touch input, so it's likely a touchpad or touchscreen
+        console.log("Touch input detected");
       } else {
-          // No touch input events detected, so it's likely a mouse
-          console.log('Mouse input detected');
+        // No touch input events detected, so it's likely a mouse
+        console.log("Mouse input detected");
       }
     </script>
   </body>

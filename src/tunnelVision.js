@@ -1066,7 +1066,7 @@ var boxMaterialV6 = new THREE.ShaderMaterial({
 });
 var boxV6 = new THREE.Mesh(boxGeometryV6, boxMaterialV6);
 boxV6.position.set(0.4, -0.2, 44);
-scene.add(boxV1, boxV2,boxV3, boxV4,boxV5, boxV6);
+scene.add(boxV1, boxV2, boxV3, boxV4, boxV5, boxV6);
 //===================================================== Create a point light in our scene
 var light = new THREE.PointLight(new THREE.Color("white"), 1, 100);
 scene.add(light);
@@ -1102,6 +1102,28 @@ let startY = 0;
 document.addEventListener("touchstart", (e) => {
   startY = e.touches[0].clientY;
 });
+
+let SkipAnim = document.querySelector(".SkipAnim");
+SkipAnim.addEventListener("click", (e) => {
+  while (scrollCount < 881) {
+    percentage += 0.001;
+    scrollCount++;
+    var p1 = path.getPointAt(percentage);
+    var p2 = path.getPointAt(percentage);
+
+    console.log("scrollCount:", scrollCount);
+  }
+  if (scrollCount > 880) {
+    light.position.set(p2.x, p2.y, p2.z);
+    gsap.to(camera.position, { z: p1.z, duration: 2 });
+    svgElement.setAttribute("viewBox", "0 0 441 49");
+
+    setTimeout(() => {
+      boxA.setAttribute("d", boxEPath);
+    svgElement.appendChild(boxA);
+    }, 1000);
+  }
+});
 window.addEventListener("wheel", function (event) {
   // console.log("Wheel",event.deltaY,animationStart);
   if (animationStart) {
@@ -1135,14 +1157,16 @@ window.addEventListener("wheel", function (event) {
         //   ease: "power1.inOut",
         // });
         // Modify the path data
-        let canvasParent= this.document.querySelector(".canvasParent");
-        event.deltaY > 0?window.scrollTo(0, canvasParent.offsetTop):null
-        event.deltaY > 0?document.body.style.overflow = 'hidden':document.body.style.overflow = 'auto';
-        
+        let canvasParent = this.document.querySelector(".canvasParent");
+        event.deltaY > 0 ? window.scrollTo(0, canvasParent.offsetTop) : null;
+        event.deltaY > 0
+          ? (document.body.style.overflow = "hidden")
+          : (document.body.style.overflow = "auto");
+
         boxA.setAttribute("d", boxAPath);
         svgElement.appendChild(boxA);
         delayCall = 1;
-        animationStart=true;
+        animationStart = true;
       }
     } else if (scrollCount >= 20 && scrollCount < 230) {
       if (delayCall == 0) {
@@ -1155,8 +1179,8 @@ window.addEventListener("wheel", function (event) {
         boxA.setAttribute("d", boxAPath);
         svgElement.appendChild(boxA);
         delayCall = 1;
-        animationStart=true;
-        event.deltaY > 0?document.body.style.overflow = 'hidden':null;
+        animationStart = true;
+        event.deltaY > 0 ? (document.body.style.overflow = "hidden") : null;
       }
     } else if (scrollCount >= 230 && scrollCount < 550) {
       if (delayCall == 0) {
@@ -1169,8 +1193,8 @@ window.addEventListener("wheel", function (event) {
         boxA.setAttribute("d", boxBPath);
         svgElement.appendChild(boxA);
         delayCall = 1;
-        animationStart=true;
-        event.deltaY > 0?document.body.style.overflow = 'hidden':null;
+        animationStart = true;
+        event.deltaY > 0 ? (document.body.style.overflow = "hidden") : null;
       }
     } else if (scrollCount >= 550 && scrollCount < 690) {
       if (delayCall == 0) {
@@ -1183,9 +1207,9 @@ window.addEventListener("wheel", function (event) {
         boxA.setAttribute("d", boxCPath);
         svgElement.appendChild(boxA);
         delayCall = 1;
-        animationStart=true;
+        animationStart = true;
       }
-    }else if (scrollCount >= 690 && scrollCount < 820) {
+    } else if (scrollCount >= 690 && scrollCount < 820) {
       if (delayCall == 0) {
         svgElement.setAttribute("viewBox", "0 0 163 49");
         // gsap.to(boxA, {
@@ -1196,9 +1220,9 @@ window.addEventListener("wheel", function (event) {
         boxA.setAttribute("d", boxDPath);
         svgElement.appendChild(boxA);
         delayCall = 1;
-        animationStart=true;
+        animationStart = true;
       }
-    }else if (scrollCount >= 821 && scrollCount < 880) {
+    } else if (scrollCount >= 821 && scrollCount < 880) {
       if (delayCall == 0) {
         svgElement.setAttribute("viewBox", "0 0 441 49");
         // gsap.to(boxA, {
@@ -1209,12 +1233,16 @@ window.addEventListener("wheel", function (event) {
         boxA.setAttribute("d", boxEPath);
         svgElement.appendChild(boxA);
         delayCall = 1;
-        animationStart=true;
+        animationStart = true;
       }
-    }else if (scrollCount >= 881) {
-      let canvasParent= this.document.querySelector(".canvasParent");
-      event.deltaY<0?window.scrollTo(0, canvasParent.offsetTop):null
-      event.deltaY > 0?document.body.style.overflow = 'auto':document.body.style.overflow = 'hidden';
+    } else if (scrollCount >= 881) {
+      let canvasParent = this.document.querySelector(".canvasParent");
+      event.deltaY < 0 ? window.scrollTo(0, canvasParent.offsetTop) : null;
+
+      event.deltaY > 0 ? null : (animationStart = true);
+      event.deltaY > 0
+        ? (document.body.style.overflow = "auto")
+        : (document.body.style.overflow = "hidden");
       // console.log("Over_____________________");
     }
     setTimeout(() => {
@@ -1265,13 +1293,11 @@ ScrollTrigger.create({
   markers: true,
   animation,
   onEnter: () => {
-    
     animationStart = true;
     // console.log("Element entered the viewport");
     const SVGMain = document.getElementById("SVGMain");
     gsap.to(SVGMain, { opacity: 1, scale: 1, duration: 2 });
     const body = document.querySelector("body");
-   
   },
   onLeave: () => {
     // document.body.style.overflow = 'auto'
@@ -1280,19 +1306,15 @@ ScrollTrigger.create({
     gsap.to(SVGMain, { opacity: 0, scale: 0, duration: 2 });
   },
   onToggle: ({ isActive }) => {
-    console.log("Active:",isActive);
-    if(isActive){
-      
+    console.log("Active:", isActive);
+    if (isActive) {
       gsap.to(SVGMain, { opacity: 1, scale: 1, duration: 2 });
       animationStart = true;
       // document.body.style.overflow = 'hidden'
-    }else{
+    } else {
       animationStart = false;
       gsap.to(SVGMain, { opacity: 0, scale: 0, duration: 2 });
       // document.body.style.overflow = 'auto'
     }
-     
   },
 });
-
-
