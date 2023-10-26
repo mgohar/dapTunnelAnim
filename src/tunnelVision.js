@@ -1290,7 +1290,7 @@ ScrollTrigger.create({
   trigger: ".canvasParent",
   start: "top 5%",
   end: "bottom 70%",
-  markers: true,
+  markers: false,
   animation,
   onEnter: () => {
     animationStart = true;
