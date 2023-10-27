@@ -6,96 +6,42 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 // import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
 //===================================================== SOCIAL MEDIA
 const Box1T =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/1.png";
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/2.png";
 const Box2T =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/2.png";
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/3.png";
 const Box3T =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/3.png";
-const Box4T =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/4.png";
-const Box5T =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/5.png";
-const Box6T =
   "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/6.png";
-const Box7T =
+const Box4T =
   "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/7.png";
-const Box8T =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/8.png";
-const Box9T =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/9.png";
-const Box10T =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/10.png";
-const Box11T =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/11.png";
-const Box12T =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/12.png";
-const Box13T =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/1.png";
-const Box14T =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/2.png";
-const Box15T =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/3.png";
-const Box16T =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/4.png";
+
 //===================================================== PHOTOGRAPHY
 const BoxP1 =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/1.png";
-const BoxP2 =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/2.png";
-const BoxP3 =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/3.png";
-const BoxP4 =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/4.png";
-const BoxP5 =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/5.png";
-const BoxP6 =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/6.png";
-const BoxP7 =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/7.png";
-const BoxP8 =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/8.png";
-const BoxP9 =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/9.png";
-const BoxP10 =
   "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/10.png";
-const BoxP11 =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/11.png";
-const BoxP12 =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/12.png";
-const BoxP13 =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/13.png";
-const BoxP14 =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/14.png";
-const BoxP15 =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/15.png";
-const BoxP16 =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/16.png";
-const BoxP17 =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/17.png";
-const BoxP18 =
+const BoxP2 =
   "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/18.png";
-const BoxP19 =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/19.png";
-const BoxP20 =
+const BoxP3 =
   "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/20.png";
+const BoxP4 =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/23.png";
+const BoxP5 =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/28.png";
+const BoxP6 =
+  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/34.png";
 
-//===================================================== SOCIAL MEDIA
+//===================================================== BRANDING
 const Box1B =
   "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/1.png";
 const Box2B =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/2.png";
-const Box3B =
   "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/3.png";
-const Box4B =
+const Box3B =
   "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/4.png";
-const Box5B =
+const Box4B =
   "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/5.png";
-const Box6B =
+const Box5B =
   "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/6.png";
-const Box7B =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/7.png";
-const Box8B =
+const Box6B =
   "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/8.png";
+
 //===================================================== UIUX
 const Box1U =
   "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/UIUX/1.png";
@@ -154,7 +100,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 
 //===================================================== Create an empty scene
 var scene = new THREE.Scene();
-scene.background = new THREE.Color("#ffffff");
+scene.background = new THREE.Color("#ffffff ");
 //===================================================== Create a perpsective camera
 var camera = new THREE.PerspectiveCamera(
   45,
@@ -174,7 +120,7 @@ window.addEventListener("resize", function () {
 //===================================================== Array of points
 var points = [
   [0, 100],
-  [0, 40],
+  [0, 50],
 ];
 
 //===================================================== Convert the array of points into vertices
@@ -253,183 +199,9 @@ var boxMaterial4 = new THREE.ShaderMaterial({
 });
 var box4 = new THREE.Mesh(boxGeometry4, boxMaterial4);
 box4.position.set(0.4, 0.4, 95);
-// Box5
-const texture5 = textureLoader.load(Box5T);
-var boxGeometry5 = new THREE.BoxGeometry(0.3, 0.3, 0);
-var boxMaterial5 = new THREE.ShaderMaterial({
-  vertexShader,
-  fragmentShader,
-  uniforms: {
-    maxDistance: { value: 3 }, // Adjust the maximum distance
-    imageTexture: { value: texture5 },
-  },
-});
-var box5 = new THREE.Mesh(boxGeometry5, boxMaterial5);
-box5.position.set(-0.5, -0.3, 94);
 
-// Box6
-const texture6 = textureLoader.load(Box6T);
-var boxGeometry6 = new THREE.BoxGeometry(0.3, 0.3, 0);
-var boxMaterial6 = new THREE.ShaderMaterial({
-  vertexShader,
-  fragmentShader,
-  uniforms: {
-    maxDistance: { value: 3 }, // Adjust the maximum distance
-    imageTexture: { value: texture6 },
-  },
-});
-var box6 = new THREE.Mesh(boxGeometry6, boxMaterial6);
-box6.position.set(0.5, -0.3, 93);
-// Box7
-const texture7 = textureLoader.load(Box7T);
-var boxGeometry7 = new THREE.BoxGeometry(0.3, 0.3, 0);
-var boxMaterial7 = new THREE.ShaderMaterial({
-  vertexShader,
-  fragmentShader,
-  uniforms: {
-    maxDistance: { value: 3 }, // Adjust the maximum distance
-    imageTexture: { value: texture7 },
-  },
-});
-var box7 = new THREE.Mesh(boxGeometry7, boxMaterial7);
-box7.position.set(-0.5, 0.3, 92);
-// Box8
-const texture8 = textureLoader.load(Box8T);
-var boxGeometry8 = new THREE.BoxGeometry(0.3, 0.3, 0);
-var boxMaterial8 = new THREE.ShaderMaterial({
-  vertexShader,
-  fragmentShader,
-  uniforms: {
-    maxDistance: { value: 3 }, // Adjust the maximum distance
-    imageTexture: { value: texture8 },
-  },
-});
-var box8 = new THREE.Mesh(boxGeometry8, boxMaterial8);
-box8.position.set(0.5, 0.3, 91);
-// Box9
-const texture9 = textureLoader.load(Box9T);
-var boxGeometry9 = new THREE.BoxGeometry(0.3, 0.3, 0);
-var boxMaterial9 = new THREE.ShaderMaterial({
-  vertexShader,
-  fragmentShader,
-  uniforms: {
-    maxDistance: { value: 3 }, // Adjust the maximum distance
-    imageTexture: { value: texture9 },
-  },
-});
-var box9 = new THREE.Mesh(boxGeometry9, boxMaterial9);
-box9.position.set(-0.6, -0.4, 90);
 
-// Box10
-const texture10 = textureLoader.load(Box10T);
-var boxGeometry10 = new THREE.BoxGeometry(0.3, 0.3, 0);
-var boxMaterial10 = new THREE.ShaderMaterial({
-  vertexShader,
-  fragmentShader,
-  uniforms: {
-    maxDistance: { value: 3 }, // Adjust the maximum distance
-    imageTexture: { value: texture10 },
-  },
-});
-var box10 = new THREE.Mesh(boxGeometry10, boxMaterial10);
-box10.position.set(0.6, -0.4, 89);
-// Box11
-const texture11 = textureLoader.load(Box11T);
-var boxGeometry11 = new THREE.BoxGeometry(0.3, 0.3, 0);
-var boxMaterial11 = new THREE.ShaderMaterial({
-  vertexShader,
-  fragmentShader,
-  uniforms: {
-    maxDistance: { value: 3 }, // Adjust the maximum distance
-    imageTexture: { value: texture11 },
-  },
-});
-var box11 = new THREE.Mesh(boxGeometry11, boxMaterial11);
-box11.position.set(-0.4, 0.4, 88);
-// Box12
-const texture12 = textureLoader.load(Box12T);
-var boxGeometry12 = new THREE.BoxGeometry(0.3, 0.3, 0);
-var boxMaterial12 = new THREE.ShaderMaterial({
-  vertexShader,
-  fragmentShader,
-  uniforms: {
-    maxDistance: { value: 3 }, // Adjust the maximum distance
-    imageTexture: { value: texture12 },
-  },
-});
-var box12 = new THREE.Mesh(boxGeometry12, boxMaterial12);
-box12.position.set(0.6, 0.4, 87);
-// Box13
-const texture13 = textureLoader.load(Box13T);
-var boxGeometry13 = new THREE.BoxGeometry(0.3, 0.3, 0);
-var boxMaterial13 = new THREE.ShaderMaterial({
-  vertexShader,
-  fragmentShader,
-  uniforms: {
-    maxDistance: { value: 3 }, // Adjust the maximum distance
-    imageTexture: { value: texture13 },
-  },
-});
-var box13 = new THREE.Mesh(boxGeometry13, boxMaterial13);
-box13.position.set(-0.4, -0.2, 86);
-
-// Box14
-const texture14 = textureLoader.load(Box14T);
-var boxGeometry14 = new THREE.BoxGeometry(0.3, 0.3, 0);
-var boxMaterial14 = new THREE.ShaderMaterial({
-  vertexShader,
-  fragmentShader,
-  uniforms: {
-    maxDistance: { value: 3 }, // Adjust the maximum distance
-    imageTexture: { value: texture14 },
-  },
-});
-var box14 = new THREE.Mesh(boxGeometry14, boxMaterial14);
-box14.position.set(0.4, -0.2, 85);
-// Box15
-const texture15 = textureLoader.load(Box15T);
-var boxGeometry15 = new THREE.BoxGeometry(0.3, 0.3, 0);
-var boxMaterial15 = new THREE.ShaderMaterial({
-  vertexShader,
-  fragmentShader,
-  uniforms: {
-    maxDistance: { value: 3 }, // Adjust the maximum distance
-    imageTexture: { value: texture15 },
-  },
-});
-var box15 = new THREE.Mesh(boxGeometry15, boxMaterial15);
-box15.position.set(-0.4, 0.4, 84);
-// Box16
-const texture16 = textureLoader.load(Box16T);
-var boxGeometry16 = new THREE.BoxGeometry(0.3, 0.3, 0);
-var boxMaterial16 = new THREE.ShaderMaterial({
-  vertexShader,
-  fragmentShader,
-  uniforms: {
-    maxDistance: { value: 3 }, // Adjust the maximum distance
-    imageTexture: { value: texture16 },
-  },
-});
-var box16 = new THREE.Mesh(boxGeometry16, boxMaterial16);
-box16.position.set(0.4, 0.4, 83);
-scene.add(
-  box1,
-  box2,
-  box3,
-  box4,
-  box5,
-  box6,
-  box7,
-  box8,
-  box9,
-  box10,
-  box11,
-  box12,
-  box13,
-  box14,
-  box15,
-  box16
-);
+scene.add(box1, box2, box3, box4);
 //===================================================== PHOTOGRAPHY
 // BoxP1
 
@@ -444,7 +216,7 @@ var boxMaterialP1 = new THREE.ShaderMaterial({
   },
 });
 var boxP1 = new THREE.Mesh(boxGeometryP1, boxMaterialP1);
-boxP1.position.set(-0.4, -0.2, 82);
+boxP1.position.set(-0.4, -0.2, 94);
 // BoxP2
 const textureP2 = textureLoader.load(BoxP2);
 var boxGeometryP2 = new THREE.BoxGeometry(0.3, 0.3, 0);
@@ -457,7 +229,7 @@ var boxMaterialP2 = new THREE.ShaderMaterial({
   },
 });
 var boxP2 = new THREE.Mesh(boxGeometryP2, boxMaterialP2);
-boxP2.position.set(0.4, -0.2, 81);
+boxP2.position.set(0.4, -0.2, 93);
 // BoxP3
 const textureP3 = textureLoader.load(BoxP3);
 var boxGeometryP3 = new THREE.BoxGeometry(0.3, 0.3, 0);
@@ -470,7 +242,7 @@ var boxMaterialP3 = new THREE.ShaderMaterial({
   },
 });
 var boxP3 = new THREE.Mesh(boxGeometryP3, boxMaterialP3);
-boxP3.position.set(-0.4, 0.4, 80);
+boxP3.position.set(-0.4, 0.4, 92);
 // BoxP4
 const textureP4 = textureLoader.load(BoxP4);
 var boxGeometryP4 = new THREE.BoxGeometry(0.3, 0.3, 0);
@@ -483,7 +255,7 @@ var boxMaterialP4 = new THREE.ShaderMaterial({
   },
 });
 var boxP4 = new THREE.Mesh(boxGeometryP4, boxMaterialP4);
-boxP4.position.set(0.4, 0.4, 79);
+boxP4.position.set(0.4, 0.4, 91);
 // BoxP5
 const textureP5 = textureLoader.load(BoxP5);
 var boxGeometryP5 = new THREE.BoxGeometry(0.3, 0.3, 0);
@@ -496,7 +268,7 @@ var boxMaterialP5 = new THREE.ShaderMaterial({
   },
 });
 var boxP5 = new THREE.Mesh(boxGeometryP5, boxMaterialP5);
-boxP5.position.set(-0.4, -0.2, 78);
+boxP5.position.set(-0.4, -0.2, 90);
 // BoxP6
 const textureP6 = textureLoader.load(BoxP6);
 var boxGeometryP6 = new THREE.BoxGeometry(0.3, 0.3, 0);
@@ -509,212 +281,9 @@ var boxMaterialP6 = new THREE.ShaderMaterial({
   },
 });
 var boxP6 = new THREE.Mesh(boxGeometryP6, boxMaterialP6);
-boxP6.position.set(0.4, -0.2, 77);
-// BoxP7
-const textureP7 = textureLoader.load(BoxP7);
-var boxGeometryP7 = new THREE.BoxGeometry(0.3, 0.3, 0);
-var boxMaterialP7 = new THREE.ShaderMaterial({
-  vertexShader,
-  fragmentShader,
-  uniforms: {
-    maxDistance: { value: 3 }, // Adjust the maximum distance
-    imageTexture: { value: textureP7 },
-  },
-});
-var boxP7 = new THREE.Mesh(boxGeometryP7, boxMaterialP7);
-boxP7.position.set(-0.4, 0.4, 76);
-// BoxP8
-const textureP8 = textureLoader.load(BoxP8);
-var boxGeometryP8 = new THREE.BoxGeometry(0.3, 0.3, 0);
-var boxMaterialP8 = new THREE.ShaderMaterial({
-  vertexShader,
-  fragmentShader,
-  uniforms: {
-    maxDistance: { value: 3 }, // Adjust the maximum distance
-    imageTexture: { value: textureP8 },
-  },
-});
-var boxP8 = new THREE.Mesh(boxGeometryP8, boxMaterialP8);
-boxP8.position.set(0.4, 0.4, 75);
-// BoxP9
-const textureP9 = textureLoader.load(BoxP9);
-var boxGeometryP9 = new THREE.BoxGeometry(0.3, 0.3, 0);
-var boxMaterialP9 = new THREE.ShaderMaterial({
-  vertexShader,
-  fragmentShader,
-  uniforms: {
-    maxDistance: { value: 3 }, // Adjust the maximum distance
-    imageTexture: { value: textureP9 },
-  },
-});
-var boxP9 = new THREE.Mesh(boxGeometryP9, boxMaterialP9);
-boxP9.position.set(-0.4, -0.2, 74);
-// BoxP10
-const textureP10 = textureLoader.load(BoxP10);
-var boxGeometryP10 = new THREE.BoxGeometry(0.3, 0.3, 0);
-var boxMaterialP10 = new THREE.ShaderMaterial({
-  vertexShader,
-  fragmentShader,
-  uniforms: {
-    maxDistance: { value: 3 }, // Adjust the maximum distance
-    imageTexture: { value: textureP10 },
-  },
-});
-var boxP10 = new THREE.Mesh(boxGeometryP10, boxMaterialP10);
-boxP10.position.set(0.4, -0.2, 73);
-// BoxP11
-const textureP11 = textureLoader.load(BoxP11);
-var boxGeometryP11 = new THREE.BoxGeometry(0.3, 0.3, 0);
-var boxMaterialP11 = new THREE.ShaderMaterial({
-  vertexShader,
-  fragmentShader,
-  uniforms: {
-    maxDistance: { value: 3 }, // Adjust the maximum distance
-    imageTexture: { value: textureP11 },
-  },
-});
-var boxP11 = new THREE.Mesh(boxGeometryP11, boxMaterialP11);
-boxP11.position.set(-0.4, 0.4, 72);
-// BoxP12
-const textureP12 = textureLoader.load(BoxP12);
-var boxGeometryP12 = new THREE.BoxGeometry(0.3, 0.3, 0);
-var boxMaterialP12 = new THREE.ShaderMaterial({
-  vertexShader,
-  fragmentShader,
-  uniforms: {
-    maxDistance: { value: 3 }, // Adjust the maximum distance
-    imageTexture: { value: textureP12 },
-  },
-});
-var boxP12 = new THREE.Mesh(boxGeometryP12, boxMaterialP12);
-boxP12.position.set(0.4, 0.4, 71);
-// BoxP13
-const textureP13 = textureLoader.load(BoxP13);
-var boxGeometryP13 = new THREE.BoxGeometry(0.3, 0.3, 0);
-var boxMaterialP13 = new THREE.ShaderMaterial({
-  vertexShader,
-  fragmentShader,
-  uniforms: {
-    maxDistance: { value: 3 }, // Adjust the maximum distance
-    imageTexture: { value: textureP13 },
-  },
-});
-var boxP13 = new THREE.Mesh(boxGeometryP13, boxMaterialP13);
-boxP13.position.set(-0.4, -0.2, 70);
-// BoxP14
-const textureP14 = textureLoader.load(BoxP14);
-var boxGeometryP14 = new THREE.BoxGeometry(0.3, 0.3, 0);
-var boxMaterialP14 = new THREE.ShaderMaterial({
-  vertexShader,
-  fragmentShader,
-  uniforms: {
-    maxDistance: { value: 3 }, // Adjust the maximum distance
-    imageTexture: { value: textureP14 },
-  },
-});
-var boxP14 = new THREE.Mesh(boxGeometryP14, boxMaterialP14);
-boxP14.position.set(0.4, -0.2, 69);
-// BoxP15
-const textureP15 = textureLoader.load(BoxP15);
-var boxGeometry15 = new THREE.BoxGeometry(0.3, 0.3, 0);
-var boxMaterial15 = new THREE.ShaderMaterial({
-  vertexShader,
-  fragmentShader,
-  uniforms: {
-    maxDistance: { value: 3 }, // Adjust the maximum distance
-    imageTexture: { value: textureP15 },
-  },
-});
-var boxP15 = new THREE.Mesh(boxGeometry15, boxMaterial15);
-boxP15.position.set(0.4, 0.4, 71);
-// BoxP16
-const textureP16 = textureLoader.load(BoxP16);
-var boxGeometryP16 = new THREE.BoxGeometry(0.3, 0.3, 0);
-var boxMaterialP16 = new THREE.ShaderMaterial({
-  vertexShader,
-  fragmentShader,
-  uniforms: {
-    maxDistance: { value: 3 }, // Adjust the maximum distance
-    imageTexture: { value: textureP16 },
-  },
-});
-var boxP16 = new THREE.Mesh(boxGeometryP16, boxMaterialP16);
-boxP16.position.set(-0.4, 0.4, 70);
-// BoxP17
-const textureP17 = textureLoader.load(BoxP17);
-var boxGeometryP17 = new THREE.BoxGeometry(0.3, 0.3, 0);
-var boxMaterialP17 = new THREE.ShaderMaterial({
-  vertexShader,
-  fragmentShader,
-  uniforms: {
-    maxDistance: { value: 3 }, // Adjust the maximum distance
-    imageTexture: { value: textureP17 },
-  },
-});
-var boxP17 = new THREE.Mesh(boxGeometryP17, boxMaterialP17);
-boxP17.position.set(-0.4, -0.2, 70);
-// BoxP18
-const textureP18 = textureLoader.load(BoxP18);
-var boxGeometryP18 = new THREE.BoxGeometry(0.3, 0.3, 0);
-var boxMaterialP18 = new THREE.ShaderMaterial({
-  vertexShader,
-  fragmentShader,
-  uniforms: {
-    maxDistance: { value: 3 }, // Adjust the maximum distance
-    imageTexture: { value: textureP18 },
-  },
-});
-var boxP18 = new THREE.Mesh(boxGeometryP18, boxMaterialP18);
-boxP18.position.set(0.4, -0.2, 69);
-// BoxP19
-const textureP19 = textureLoader.load(BoxP19);
-var boxGeometryP19 = new THREE.BoxGeometry(0.3, 0.3, 0);
-var boxMaterialP19 = new THREE.ShaderMaterial({
-  vertexShader,
-  fragmentShader,
-  uniforms: {
-    maxDistance: { value: 3 }, // Adjust the maximum distance
-    imageTexture: { value: textureP19 },
-  },
-});
-var boxP19 = new THREE.Mesh(boxGeometryP19, boxMaterialP19);
-boxP19.position.set(0.4, 0.4, 68);
-// BoxP20
-const textureP20 = textureLoader.load(BoxP20);
-var boxGeometryP20 = new THREE.BoxGeometry(0.3, 0.3, 0);
-var boxMaterialP20 = new THREE.ShaderMaterial({
-  vertexShader,
-  fragmentShader,
-  uniforms: {
-    maxDistance: { value: 3 }, // Adjust the maximum distance
-    imageTexture: { value: textureP20 },
-  },
-});
-var boxP20 = new THREE.Mesh(boxGeometryP20, boxMaterialP20);
-boxP20.position.set(-0.4, 0.4, 67);
+boxP6.position.set(0.4, -0.2, 89);
 
-scene.add(
-  boxP1,
-  boxP2,
-  boxP3,
-  boxP4,
-  boxP5,
-  boxP6,
-  boxP7,
-  boxP8,
-  boxP9,
-  boxP10,
-  boxP11,
-  boxP12,
-  boxP13,
-  boxP14,
-  boxP15,
-  boxP16,
-  boxP17,
-  boxP18,
-  boxP19,
-  boxP20
-);
+scene.add(boxP1, boxP2, boxP3, boxP4, boxP5, boxP6);
 //===================================================== BRANDING
 // BoxB1
 const textureB1 = textureLoader.load(Box1B);
@@ -728,7 +297,7 @@ var boxMaterialB1 = new THREE.ShaderMaterial({
   },
 });
 var boxB1 = new THREE.Mesh(boxGeometryB1, boxMaterialB1);
-boxB1.position.set(-0.4, -0.2, 65);
+boxB1.position.set(-0.4, -0.2, 88);
 
 // BoxB2
 const textureB2 = textureLoader.load(Box2B);
@@ -742,7 +311,7 @@ var boxMaterialB2 = new THREE.ShaderMaterial({
   },
 });
 var boxB2 = new THREE.Mesh(boxGeometryB2, boxMaterialB2);
-boxB2.position.set(0.4, -0.2, 64);
+boxB2.position.set(0.4, -0.2, 87);
 // BoxB3
 const textureB3 = textureLoader.load(Box3B);
 var boxGeometryB3 = new THREE.BoxGeometry(0.4, 0.3, 0);
@@ -755,7 +324,7 @@ var boxMaterialB3 = new THREE.ShaderMaterial({
   },
 });
 var boxB3 = new THREE.Mesh(boxGeometryB3, boxMaterialB3);
-boxB3.position.set(-0.4, 0.4, 63);
+boxB3.position.set(-0.4, 0.4, 86);
 
 // BoxB4
 const textureB4 = textureLoader.load(Box4B);
@@ -769,7 +338,7 @@ var boxMaterialB4 = new THREE.ShaderMaterial({
   },
 });
 var boxB4 = new THREE.Mesh(boxGeometryB4, boxMaterialB4);
-boxB4.position.set(0.4, 0.4, 62);
+boxB4.position.set(0.4, 0.4, 85);
 // BoxB5
 const textureB5 = textureLoader.load(Box5B);
 var boxGeometryB5 = new THREE.BoxGeometry(0.3, 0.4, 0);
@@ -782,7 +351,7 @@ var boxMaterialB5 = new THREE.ShaderMaterial({
   },
 });
 var boxB5 = new THREE.Mesh(boxGeometryB5, boxMaterialB5);
-boxB5.position.set(-0.4, -0.2, 61);
+boxB5.position.set(-0.4, -0.2, 84);
 
 // BoxB6
 const textureB6 = textureLoader.load(Box6B);
@@ -796,36 +365,9 @@ var boxMaterialB6 = new THREE.ShaderMaterial({
   },
 });
 var boxB6 = new THREE.Mesh(boxGeometryB6, boxMaterialB6);
-boxB6.position.set(0.4, -0.2, 60);
-// BoxB7
-const textureB7 = textureLoader.load(Box7B);
-var boxGeometryB7 = new THREE.BoxGeometry(0.4, 0.3, 0);
-var boxMaterialB7 = new THREE.ShaderMaterial({
-  vertexShader,
-  fragmentShader,
-  uniforms: {
-    maxDistance: { value: 3 }, // Adjust the maximum distance
-    imageTexture: { value: textureB7 },
-  },
-});
-var boxB7 = new THREE.Mesh(boxGeometryB7, boxMaterialB7);
-boxB7.position.set(-0.4, 0.4, 59);
+boxB6.position.set(0.4, -0.2, 83);
 
-// BoxB8
-const textureB8 = textureLoader.load(Box8B);
-var boxGeometryB8 = new THREE.BoxGeometry(0.4, 0.3, 0);
-var boxMaterialB8 = new THREE.ShaderMaterial({
-  vertexShader,
-  fragmentShader,
-  uniforms: {
-    maxDistance: { value: 3 }, // Adjust the maximum distance
-    imageTexture: { value: textureB8 },
-  },
-});
-var boxB8 = new THREE.Mesh(boxGeometryB8, boxMaterialB8);
-boxB8.position.set(0.4, 0.4, 58);
-
-scene.add(boxB1, boxB2, boxB3, boxB4, boxB5, boxB6, boxB7, boxB8);
+scene.add(boxB1, boxB2, boxB3, boxB4, boxB5, boxB6);
 //===================================================== UI/UX
 // BoxU1
 const textureU1 = textureLoader.load(Box1U);
@@ -839,7 +381,7 @@ var boxMaterialU1 = new THREE.ShaderMaterial({
   },
 });
 var boxU1 = new THREE.Mesh(boxGeometryU1, boxMaterialU1);
-boxU1.position.set(-0.4, -0.2, 57);
+boxU1.position.set(-0.4, -0.2, 82);
 
 // BoxU2
 const textureU2 = textureLoader.load(Box2U);
@@ -853,7 +395,7 @@ var boxMaterialU2 = new THREE.ShaderMaterial({
   },
 });
 var boxU2 = new THREE.Mesh(boxGeometryU2, boxMaterialU2);
-boxU2.position.set(0.4, -0.2, 56);
+boxU2.position.set(0.4, -0.2, 81);
 // BoxU3
 const textureU3 = textureLoader.load(Box3U);
 var boxGeometryU3 = new THREE.BoxGeometry(0.4, 0.3, 0);
@@ -866,7 +408,7 @@ var boxMaterialU3 = new THREE.ShaderMaterial({
   },
 });
 var boxU3 = new THREE.Mesh(boxGeometryU3, boxMaterialU3);
-boxU3.position.set(-0.4, 0.4, 55);
+boxU3.position.set(-0.4, 0.4, 80);
 
 // BoxU4
 const textureU4 = textureLoader.load(Box4U);
@@ -880,7 +422,7 @@ var boxMaterialU4 = new THREE.ShaderMaterial({
   },
 });
 var boxU4 = new THREE.Mesh(boxGeometryU4, boxMaterialU4);
-boxU4.position.set(0.4, 0.4, 54);
+boxU4.position.set(0.4, 0.4, 79);
 // BoxU5
 const textureU5 = textureLoader.load(Box5U);
 var boxGeometryU5 = new THREE.BoxGeometry(0.4, 0.3, 0);
@@ -893,7 +435,7 @@ var boxMaterialU5 = new THREE.ShaderMaterial({
   },
 });
 var boxU5 = new THREE.Mesh(boxGeometryU5, boxMaterialU5);
-boxU5.position.set(-0.4, -0.2, 53);
+boxU5.position.set(-0.4, -0.2, 78);
 
 // BoxU6
 const textureU6 = textureLoader.load(Box6U);
@@ -907,7 +449,7 @@ var boxMaterialU6 = new THREE.ShaderMaterial({
   },
 });
 var boxU6 = new THREE.Mesh(boxGeometryU6, boxMaterialU6);
-boxU6.position.set(0.4, -0.2, 52);
+boxU6.position.set(0.4, -0.2, 77);
 // BoxU7
 const textureU7 = textureLoader.load(Box7U);
 var boxGeometryU7 = new THREE.BoxGeometry(0.4, 0.3, 0);
@@ -920,7 +462,7 @@ var boxMaterialU7 = new THREE.ShaderMaterial({
   },
 });
 var boxU7 = new THREE.Mesh(boxGeometryU7, boxMaterialU7);
-boxU7.position.set(-0.4, 0.4, 51);
+boxU7.position.set(-0.4, 0.4, 76);
 
 // BoxU8
 const textureU8 = textureLoader.load(Box8U);
@@ -934,7 +476,7 @@ var boxMaterialU8 = new THREE.ShaderMaterial({
   },
 });
 var boxU8 = new THREE.Mesh(boxGeometryU8, boxMaterialU8);
-boxU8.position.set(0.4, 0.4, 50);
+boxU8.position.set(0.4, 0.4, 75);
 
 scene.add(boxU1, boxU2, boxU3, boxU4, boxU5, boxU6, boxU7, boxU8);
 //===================================================== VIDEOGRAPHY
@@ -958,7 +500,7 @@ var boxMaterialV1 = new THREE.ShaderMaterial({
   },
 });
 var boxV1 = new THREE.Mesh(boxGeometryV1, boxMaterialV1);
-boxV1.position.set(-0.4, -0.2, 49);
+boxV1.position.set(-0.4, -0.2, 74);
 
 // BoxV2
 var videoV2 = document.createElement("video");
@@ -980,7 +522,7 @@ var boxMaterialV2 = new THREE.ShaderMaterial({
   },
 });
 var boxV2 = new THREE.Mesh(boxGeometryV2, boxMaterialV2);
-boxV2.position.set(0.4, -0.2, 48);
+boxV2.position.set(0.4, -0.2, 73);
 // BoxV3
 var videoV3 = document.createElement("video");
 var videoTextureV3 = new THREE.VideoTexture(videoV3);
@@ -1001,7 +543,7 @@ var boxMaterialV3 = new THREE.ShaderMaterial({
   },
 });
 var boxV3 = new THREE.Mesh(boxGeometryV3, boxMaterialV3);
-boxV3.position.set(-0.4, 0.4, 47);
+boxV3.position.set(-0.4, 0.4, 72);
 // BoxV4
 var videoV4 = document.createElement("video");
 var videoTextureV4 = new THREE.VideoTexture(videoV4);
@@ -1022,7 +564,7 @@ var boxMaterialV4 = new THREE.ShaderMaterial({
   },
 });
 var boxV4 = new THREE.Mesh(boxGeometryV4, boxMaterialV4);
-boxV4.position.set(0.4, 0.4, 46);
+boxV4.position.set(0.4, 0.4, 71);
 // BoxV5
 var videoV5 = document.createElement("video");
 var videoTextureV5 = new THREE.VideoTexture(videoV5);
@@ -1043,7 +585,7 @@ var boxMaterialV5 = new THREE.ShaderMaterial({
   },
 });
 var boxV5 = new THREE.Mesh(boxGeometryV5, boxMaterialV5);
-boxV5.position.set(-0.4, -0.2, 45);
+boxV5.position.set(-0.4, -0.2, 70);
 
 // BoxV2
 var videoV6 = document.createElement("video");
@@ -1065,7 +607,7 @@ var boxMaterialV6 = new THREE.ShaderMaterial({
   },
 });
 var boxV6 = new THREE.Mesh(boxGeometryV6, boxMaterialV6);
-boxV6.position.set(0.4, -0.2, 44);
+boxV6.position.set(0.4, -0.2, 69);
 scene.add(boxV1, boxV2, boxV3, boxV4, boxV5, boxV6);
 //===================================================== Create a point light in our scene
 var light = new THREE.PointLight(new THREE.Color("white"), 1, 100);
@@ -1120,7 +662,7 @@ SkipAnim.addEventListener("click", (e) => {
 
     setTimeout(() => {
       boxA.setAttribute("d", boxEPath);
-    svgElement.appendChild(boxA);
+      svgElement.appendChild(boxA);
     }, 1000);
   }
 });
@@ -1128,24 +670,14 @@ window.addEventListener("wheel", function (event) {
   // console.log("Wheel",event.deltaY,animationStart);
   if (animationStart) {
     if (event.deltaY > 0) {
-      percentage += 0.001;
+      percentage += 0.009;
       scrollCount++;
     } else if (event.deltaY < 0) {
       if (percentage > 0.005) {
-        percentage -= 0.001;
+        percentage -= 0.009;
         scrollCount--;
       }
     }
-    // const currentY = event.touches[0].clientY;
-    // if (currentY > startY) {
-    //   percentage += 0.004;
-    //   scrollCount++;
-    //   console.log("Moving downward");
-    // } else if (currentY < startY) {
-    //   percentage -= 0.004;
-    //   scrollCount--;
-    //   console.log("Moving upward");
-    // }
     console.log("scrollCount:", scrollCount);
 
     if (scrollCount > -2 && scrollCount < 20) {
@@ -1168,25 +700,11 @@ window.addEventListener("wheel", function (event) {
         delayCall = 1;
         animationStart = true;
       }
-    } else if (scrollCount >= 20 && scrollCount < 230) {
-      if (delayCall == 0) {
-        svgElement.setAttribute("viewBox", "0 0 435 49");
-        // gsap.to(boxA, {
-        //   morphSVG: boxBPath,
-        //   duration: 0.3,
-        //   ease: "power1.inOut",
-        // });
-        boxA.setAttribute("d", boxAPath);
-        svgElement.appendChild(boxA);
-        delayCall = 1;
-        animationStart = true;
-        event.deltaY > 0 ? (document.body.style.overflow = "hidden") : null;
-      }
-    } else if (scrollCount >= 230 && scrollCount < 550) {
+    } else if (scrollCount >= 20 && scrollCount < 38) {
       if (delayCall == 0) {
         svgElement.setAttribute("viewBox", "0 0 466 49");
         // gsap.to(boxA, {
-        //   morphSVG: boxCPath,
+        //   morphSVG: boxBPath,
         //   duration: 0.3,
         //   ease: "power1.inOut",
         // });
@@ -1196,11 +714,11 @@ window.addEventListener("wheel", function (event) {
         animationStart = true;
         event.deltaY > 0 ? (document.body.style.overflow = "hidden") : null;
       }
-    } else if (scrollCount >= 550 && scrollCount < 690) {
+    } else if (scrollCount >= 38 && scrollCount < 58) {
       if (delayCall == 0) {
         svgElement.setAttribute("viewBox", "0 0 317 49");
         // gsap.to(boxA, {
-        //   morphSVG: boxDPath,
+        //   morphSVG: boxCPath,
         //   duration: 0.3,
         //   ease: "power1.inOut",
         // });
@@ -1208,10 +726,11 @@ window.addEventListener("wheel", function (event) {
         svgElement.appendChild(boxA);
         delayCall = 1;
         animationStart = true;
+        event.deltaY > 0 ? (document.body.style.overflow = "hidden") : null;
       }
-    } else if (scrollCount >= 690 && scrollCount < 820) {
+    } else if (scrollCount >= 58 && scrollCount < 78) {
       if (delayCall == 0) {
-        svgElement.setAttribute("viewBox", "0 0 163 49");
+        svgElement.setAttribute("viewBox", "0 0 163 48");
         // gsap.to(boxA, {
         //   morphSVG: boxDPath,
         //   duration: 0.3,
@@ -1222,7 +741,7 @@ window.addEventListener("wheel", function (event) {
         delayCall = 1;
         animationStart = true;
       }
-    } else if (scrollCount >= 821 && scrollCount < 880) {
+    } else if (scrollCount >= 78 && scrollCount < 90) {
       if (delayCall == 0) {
         svgElement.setAttribute("viewBox", "0 0 441 49");
         // gsap.to(boxA, {
@@ -1235,13 +754,23 @@ window.addEventListener("wheel", function (event) {
         delayCall = 1;
         animationStart = true;
       }
-    } else if (scrollCount >= 881) {
+    } else if (scrollCount >= 90 && scrollCount <= 99) {
+      debounce(AnimateSVG, 2000,event);
+      
+     
+      event.deltaY > 0 ? null : (animationStart = true);
+      delayCall = 1;
+        animationStart = true;
+  
+    } else if (scrollCount >= 105) {
+     
+      // event.deltaY > 0? gsap.to(SVGMain, { opacity: 1, scale:  window.innerWidth/(window.innerWidth/2), duration: 0.9 }):gsap.to(SVGMain, { opacity: 1, scale: 1, duration: 0.9 });
       let canvasParent = this.document.querySelector(".canvasParent");
       event.deltaY < 0 ? window.scrollTo(0, canvasParent.offsetTop) : null;
 
       event.deltaY > 0 ? null : (animationStart = true);
       event.deltaY > 0
-        ? (document.body.style.overflow = "auto")
+        ?document.body.style.overflow = "auto"
         : (document.body.style.overflow = "hidden");
       // console.log("Over_____________________");
     }
@@ -1303,18 +832,36 @@ ScrollTrigger.create({
     // document.body.style.overflow = 'auto'
     // console.log("Element left the viewport");
     animationStart = false;
-    gsap.to(SVGMain, { opacity: 0, scale: 0, duration: 2 });
+    // gsap.to(SVGMain, { opacity: 1, scale: 3, duration: 1 });
   },
   onToggle: ({ isActive }) => {
     console.log("Active:", isActive);
     if (isActive) {
-      gsap.to(SVGMain, { opacity: 1, scale: 1, duration: 2 });
+      // gsap.to(SVGMain, { opacity: 1, scale: 1, duration: 2 });
       animationStart = true;
       // document.body.style.overflow = 'hidden'
     } else {
       animationStart = false;
-      gsap.to(SVGMain, { opacity: 0, scale: 0, duration: 2 });
+      // gsap.to(SVGMain, { opacity: 1, scale: 3, duration: 1 });
       // document.body.style.overflow = 'auto'
     }
   },
 });
+
+let check=1;
+function debounce(func, wait,event) {
+  let timeout;
+  if(check==1) func(event);
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      check=1;
+    }, wait);
+}
+function AnimateSVG(event) {
+  console.log('asdfasdfasfasfasfasfsafsfs---------------------------------------');
+  event.deltaY < 0
+        ? gsap.to(SVGMain, { opacity: 1, scale: 1, duration: 0.9 })
+        :  gsap.to(SVGMain, { opacity: 1, scale: window.innerWidth/(window.innerWidth/2), duration: 0.9 });;
+
+  check=0
+}
