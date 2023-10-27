@@ -682,6 +682,7 @@ window.addEventListener("wheel", function (event) {
       }
     } else if (scrollCount >= 10 && scrollCount < 23) {
       if (delayCall == 0) {
+        event.deltaY > 0 ? window.scrollTo(0, canvasParent.offsetTop) : null;
         svgElement.setAttribute("viewBox", "0 0 466 49");
         gsap.to(boxA, {
           morphSVG: boxBPath,
@@ -696,6 +697,7 @@ window.addEventListener("wheel", function (event) {
       }
     } else if (scrollCount >= 23 && scrollCount < 37) {
       if (delayCall == 0) {
+        event.deltaY > 0 ? window.scrollTo(0, canvasParent.offsetTop) : null;
         svgElement.setAttribute("viewBox", "0 0 317 49");
         gsap.to(boxA, {
           morphSVG: boxCPath,
@@ -742,7 +744,7 @@ window.addEventListener("wheel", function (event) {
       delayCall = 1;
       animationStart = true;
   
-    } else if (scrollCount >= 105) {
+    } else if (scrollCount >= 100) {
      
       // event.deltaY > 0? gsap.to(SVGMain, { opacity: 1, scale:  window.innerWidth/(window.innerWidth/2), duration: 0.9 }):gsap.to(SVGMain, { opacity: 1, scale: 1, duration: 0.9 });
       let canvasParent = this.document.querySelector(".canvasParent");
