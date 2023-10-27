@@ -3,7 +3,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
+import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
 //===================================================== SOCIAL MEDIA
 const Box1T =
   "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/2.png";
@@ -88,7 +88,7 @@ let scrollCount = 0;
 const textContainer = document.querySelector(".bz-animation-title");
 const textureLoader = new THREE.TextureLoader();
 const gs = gsap.timeline();
-// gsap.registerPlugin(MorphSVGPlugin);
+gsap.registerPlugin(MorphSVGPlugin);
 gsap.registerPlugin(ScrollTrigger);
 
 //===================================================== Create a WebGL renderer
@@ -632,11 +632,11 @@ const boxDPath =
 const boxEPath =
   "M16.856 48L0.536 1.28H7.768L20.376 37.696L32.984 1.28H40.216L23.896 48H16.856ZM45.782 48V1.28H52.758V48H45.782ZM60.3965 48V1.28H73.3245C88.4925 1.28 97.8365 11.392 97.8365 24.64C97.8365 37.952 87.5965 48 73.5805 48H60.3965ZM72.6205 7.68H67.3725V41.536H72.8765C83.6285 41.536 90.7965 34.24 90.7965 24.64C90.7965 14.848 84.3325 7.68 72.6205 7.68ZM103.647 48V1.28H131.679V7.872H110.623V21.248H131.679V27.84H110.623V41.344H131.679V48H103.647ZM161.114 48.64C147.866 48.64 137.178 37.888 137.178 24.64C137.178 11.392 147.866 0.639999 161.114 0.639999C174.426 0.639999 185.114 11.392 185.114 24.64C185.114 37.888 174.426 48.64 161.114 48.64ZM161.114 41.856C170.714 41.856 178.138 34.112 178.138 24.64C178.138 15.168 170.714 7.36 161.114 7.36C151.578 7.36 144.154 15.168 144.154 24.64C144.154 34.112 151.578 41.856 161.114 41.856ZM214.496 48.64C200.416 48.64 190.24 37.696 190.24 24.64C190.24 11.328 200.416 0.639999 214.432 0.639999C223.776 0.639999 231.392 5.504 235.424 12.672L229.344 16.32C226.336 10.688 221.152 7.296 214.432 7.296C204.32 7.296 197.216 15.168 197.216 24.64C197.216 34.176 204.448 41.92 214.496 41.92C223.328 41.92 228.896 36.544 230.368 28.992H213.6V22.4H237.664V24.896C237.664 37.568 229.024 48.64 214.496 48.64ZM243.459 48V1.28H257.987C267.907 1.28 274.499 8 274.499 16.512C274.499 22.72 271.043 28.608 264.387 30.656L275.523 48H267.523L253.443 25.728H257.219C264.195 25.728 267.523 20.8 267.523 16.512C267.523 11.264 264.131 7.744 257.283 7.744H250.435V48H243.459ZM278.786 48L295.938 1.28H303.106L320.258 48H313.026L309.378 38.016H289.666L286.082 48H278.786ZM299.522 10.88L292.098 31.36H306.946L299.522 10.88ZM325.397 48V1.28H340.757C350.677 1.28 357.653 8.448 357.653 17.664C357.653 26.816 350.677 34.048 340.693 34.048H332.373V48H325.397ZM340.245 7.68H332.373V27.584H340.245C346.645 27.584 350.677 23.232 350.677 17.664C350.677 12.032 346.645 7.68 340.245 7.68ZM391.805 48V27.84H370.685V48H363.709V1.28H370.685V21.184H391.805V1.28H398.717V48H391.805ZM418.825 48V25.856L403.657 1.28H411.337L422.281 19.2L433.289 1.28H440.969L425.737 25.92V48H418.825Z";
 const boxA = document.getElementById("SVGA");
-// MorphSVGPlugin.convertToPath(boxA);
-const morphTimeline = gsap
-  .timeline({ paused: true })
-  .to(boxA, { duration: 1, morphSVG: boxBPath, ease: "power1.inOut" })
-  .to(boxA, { duration: 1, morphSVG: boxAPath, ease: "power1.inOut" });
+MorphSVGPlugin.convertToPath(boxA);
+// const morphTimeline = gsap
+//   .timeline({ paused: true })
+//   .to(boxA, { duration: 1, morphSVG: boxBPath, ease: "power1.inOut" })
+//   .to(boxA, { duration: 1, morphSVG: boxAPath, ease: "power1.inOut" });
 const svgElement = document.getElementById("SVGMain");
 
 let startY = 0;
@@ -645,27 +645,7 @@ document.addEventListener("touchstart", (e) => {
   startY = e.touches[0].clientY;
 });
 
-let SkipAnim = document.querySelector(".SkipAnim");
-SkipAnim.addEventListener("click", (e) => {
-  while (scrollCount < 881) {
-    percentage += 0.001;
-    scrollCount++;
-    var p1 = path.getPointAt(percentage);
-    var p2 = path.getPointAt(percentage);
 
-    console.log("scrollCount:", scrollCount);
-  }
-  if (scrollCount > 880) {
-    light.position.set(p2.x, p2.y, p2.z);
-    gsap.to(camera.position, { z: p1.z, duration: 2 });
-    svgElement.setAttribute("viewBox", "0 0 441 49");
-
-    setTimeout(() => {
-      boxA.setAttribute("d", boxEPath);
-      svgElement.appendChild(boxA);
-    }, 1000);
-  }
-});
 window.addEventListener("wheel", function (event) {
   // console.log("Wheel",event.deltaY,animationStart);
   if (animationStart) {
@@ -680,14 +660,14 @@ window.addEventListener("wheel", function (event) {
     }
     console.log("scrollCount:", scrollCount);
 
-    if (scrollCount > -2 && scrollCount < 20) {
+    if (scrollCount > -2 && scrollCount < 10) {
       if (delayCall == 0) {
         svgElement.setAttribute("viewBox", "0 0 435 49");
-        // gsap.to(boxA, {
-        //   morphSVG: boxAPath,
-        //   duration: 0.3,
-        //   ease: "power1.inOut",
-        // });
+        gsap.to(boxA, {
+          morphSVG: boxAPath,
+          duration: 0.3,
+          ease: "power1.inOut",
+        });
         // Modify the path data
         let canvasParent = this.document.querySelector(".canvasParent");
         event.deltaY > 0 ? window.scrollTo(0, canvasParent.offsetTop) : null;
@@ -695,62 +675,62 @@ window.addEventListener("wheel", function (event) {
           ? (document.body.style.overflow = "hidden")
           : (document.body.style.overflow = "auto");
 
-        boxA.setAttribute("d", boxAPath);
-        svgElement.appendChild(boxA);
+        // boxA.setAttribute("d", boxAPath);
+        // svgElement.appendChild(boxA);
         delayCall = 1;
         animationStart = true;
       }
-    } else if (scrollCount >= 20 && scrollCount < 38) {
+    } else if (scrollCount >= 10 && scrollCount < 23) {
       if (delayCall == 0) {
         svgElement.setAttribute("viewBox", "0 0 466 49");
-        // gsap.to(boxA, {
-        //   morphSVG: boxBPath,
-        //   duration: 0.3,
-        //   ease: "power1.inOut",
-        // });
-        boxA.setAttribute("d", boxBPath);
-        svgElement.appendChild(boxA);
+        gsap.to(boxA, {
+          morphSVG: boxBPath,
+          duration: 0.3,
+          ease: "power1.inOut",
+        });
+        // boxA.setAttribute("d", boxBPath);
+        // svgElement.appendChild(boxA);
         delayCall = 1;
         animationStart = true;
         event.deltaY > 0 ? (document.body.style.overflow = "hidden") : null;
       }
-    } else if (scrollCount >= 38 && scrollCount < 58) {
+    } else if (scrollCount >= 23 && scrollCount < 37) {
       if (delayCall == 0) {
         svgElement.setAttribute("viewBox", "0 0 317 49");
-        // gsap.to(boxA, {
-        //   morphSVG: boxCPath,
-        //   duration: 0.3,
-        //   ease: "power1.inOut",
-        // });
-        boxA.setAttribute("d", boxCPath);
-        svgElement.appendChild(boxA);
+        gsap.to(boxA, {
+          morphSVG: boxCPath,
+          duration: 0.3,
+          ease: "power1.inOut",
+        });
+        // boxA.setAttribute("d", boxCPath);
+        // svgElement.appendChild(boxA);
         delayCall = 1;
         animationStart = true;
         event.deltaY > 0 ? (document.body.style.overflow = "hidden") : null;
       }
-    } else if (scrollCount >= 58 && scrollCount < 78) {
+    } else if (scrollCount >= 37 && scrollCount < 53) {
       if (delayCall == 0) {
         svgElement.setAttribute("viewBox", "0 0 163 48");
-        // gsap.to(boxA, {
-        //   morphSVG: boxDPath,
-        //   duration: 0.3,
-        //   ease: "power1.inOut",
-        // });
-        boxA.setAttribute("d", boxDPath);
-        svgElement.appendChild(boxA);
+        gsap.to(boxA, {
+          morphSVG: boxDPath,
+          duration: 0.3,
+          ease: "power1.inOut",
+        });
+        // boxA.setAttribute("d", boxDPath);
+        // svgElement.appendChild(boxA);
         delayCall = 1;
         animationStart = true;
       }
-    } else if (scrollCount >= 78 && scrollCount < 90) {
+    } else if (scrollCount >= 53 && scrollCount < 90) {
       if (delayCall == 0) {
         svgElement.setAttribute("viewBox", "0 0 441 49");
-        // gsap.to(boxA, {
-        //   morphSVG: boxDPath,
-        //   duration: 0.3,
-        //   ease: "power1.inOut",
-        // });
-        boxA.setAttribute("d", boxEPath);
-        svgElement.appendChild(boxA);
+        gsap.to(boxA, {
+          morphSVG: boxEPath,
+          duration: 0.3,
+          ease: "power1.inOut",
+        });
+        // boxA.setAttribute("d", boxEPath);
+        // svgElement.appendChild(boxA);
         delayCall = 1;
         animationStart = true;
       }
@@ -760,14 +740,14 @@ window.addEventListener("wheel", function (event) {
      
       event.deltaY > 0 ? null : (animationStart = true);
       delayCall = 1;
-        animationStart = true;
+      animationStart = true;
   
     } else if (scrollCount >= 105) {
      
       // event.deltaY > 0? gsap.to(SVGMain, { opacity: 1, scale:  window.innerWidth/(window.innerWidth/2), duration: 0.9 }):gsap.to(SVGMain, { opacity: 1, scale: 1, duration: 0.9 });
       let canvasParent = this.document.querySelector(".canvasParent");
       event.deltaY < 0 ? window.scrollTo(0, canvasParent.offsetTop) : null;
-
+      animationStart = true;
       event.deltaY > 0 ? null : (animationStart = true);
       event.deltaY > 0
         ?document.body.style.overflow = "auto"
