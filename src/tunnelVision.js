@@ -6,59 +6,59 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
 //===================================================== SOCIAL MEDIA
 const Box1T =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/2.png";
+  "./assets/Social/2.png";
 const Box2T =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/3.png";
+  "./assets/Social/3.png";
 const Box3T =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/6.png";
+  "./assets/Social/6.png";
 const Box4T =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Social/7.png";
+  "./assets/Social/7.png";
 
 //===================================================== PHOTOGRAPHY
 const BoxP1 =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/10.png";
+  "./assets/Photography/10.png";
 const BoxP2 =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/18.png";
+  "./assets/Photography/18.png";
 const BoxP3 =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/20.png";
+  "./assets/Photography/20.png";
 const BoxP4 =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/23.png";
+  "./assets/Photography/23.png";
 const BoxP5 =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/28.png";
+  "./assets/Photography/28.png";
 const BoxP6 =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Photography/34.png";
+  "./assets/Photography/34.png";
 
 //===================================================== BRANDING
 const Box1B =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/1.png";
+  "./assets/Branding/1.png";
 const Box2B =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/3.png";
+  "./assets/Branding/3.png";
 const Box3B =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/4.png";
+  "./assets/Branding/4.png";
 const Box4B =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/5.png";
+  "./assets/Branding/5.png";
 const Box5B =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/6.png";
+  "./assets/Branding/6.png";
 const Box6B =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Branding/8.png";
+  "./assets/Branding/8.png";
 
 //===================================================== UIUX
 const Box1U =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/UIUX/1.png";
+  "./assets/UIUX/1.png";
 const Box2U =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/UIUX/2.png";
+  "./assets/UIUX/2.png";
 const Box3U =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/UIUX/3.png";
+  "./assets/UIUX/3.png";
 const Box4U =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/UIUX/4.png";
+  "./assets/UIUX/4.png";
 const Box5U =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/UIUX/5.png";
+  "./assets/UIUX/5.png";
 const Box6U =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/UIUX/6.png";
+  "./assets/UIUX/6.png";
 const Box7U =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/UIUX/7.png";
+  "./assets/UIUX/7.png";
 const Box8U =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/UIUX/8.png";
+  "./assets/UIUX/8.png";
 //===================================================== Shaders
 const vertexShader = `
   varying float vDistance;
@@ -484,7 +484,7 @@ scene.add(boxU1, boxU2, boxU3, boxU4, boxU5, boxU6, boxU7, boxU8);
 var videoV1 = document.createElement("video");
 var videoTextureV1 = new THREE.VideoTexture(videoV1);
 videoV1.src =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Video/1.mp4";
+  "./assets/Video/1.mp4";
 videoV1.crossOrigin = "anonymous";
 videoV1.muted = "muted";
 videoV1.loop = true;
@@ -506,7 +506,7 @@ boxV1.position.set(-0.4, -0.2, 74);
 var videoV2 = document.createElement("video");
 var videoTextureV2 = new THREE.VideoTexture(videoV2);
 videoV2.src =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Video/2.mp4";
+  "./assets/Video/2.mp4";
 videoV2.crossOrigin = "anonymous";
 videoV2.muted = "muted";
 videoV2.loop = true;
@@ -527,7 +527,7 @@ boxV2.position.set(0.4, -0.2, 73);
 var videoV3 = document.createElement("video");
 var videoTextureV3 = new THREE.VideoTexture(videoV3);
 videoV3.src =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Video/3.mp4";
+  "./assets/Video/3.mp4";
 videoV3.crossOrigin = "anonymous";
 videoV3.muted = "muted";
 videoV3.loop = true;
@@ -548,7 +548,7 @@ boxV3.position.set(-0.4, 0.4, 72);
 var videoV4 = document.createElement("video");
 var videoTextureV4 = new THREE.VideoTexture(videoV4);
 videoV4.src =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Video/4.mp4";
+  "./assets/Video/4.mp4";
 videoV4.crossOrigin = "anonymous";
 videoV4.muted = "muted";
 videoV4.loop = true;
@@ -569,7 +569,7 @@ boxV4.position.set(0.4, 0.4, 71);
 var videoV5 = document.createElement("video");
 var videoTextureV5 = new THREE.VideoTexture(videoV5);
 videoV5.src =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Video/5.mp4";
+  "./assets/Video/5.mp4";
 videoV5.crossOrigin = "anonymous";
 videoV5.muted = "muted";
 videoV5.loop = true;
@@ -591,7 +591,7 @@ boxV5.position.set(-0.4, -0.2, 70);
 var videoV6 = document.createElement("video");
 var videoTextureV6 = new THREE.VideoTexture(videoV6);
 videoV6.src =
-  "https://celestialcode.s3.us-west-2.amazonaws.com/DAP/Portfolio/Video/2.mp4";
+  "./assets/Video/2.mp4";
 videoV6.crossOrigin = "anonymous";
 videoV6.muted = "muted";
 videoV6.loop = true;
