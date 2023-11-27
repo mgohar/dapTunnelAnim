@@ -141,7 +141,7 @@ var geometry = new THREE.TubeGeometry(path, 300, 3, sides, true);
 var material = new THREE.MeshBasicMaterial({
   side: THREE.BackSide,
   map: new THREE.TextureLoader().load(
-    "https://celestialcode.s3.us-west-2.amazonaws.com/Parvarish/RippleAnimationAssets/env_texture1.png"
+    "./assets/dap_texture.png"
   ),
 });
 material.map.wrapS = THREE.RepeatWrapping;
