@@ -141,7 +141,7 @@ var geometry = new THREE.TubeGeometry(path, 300, 3, sides, true);
 var material = new THREE.MeshBasicMaterial({
   side: THREE.BackSide,
   map: new THREE.TextureLoader().load(
-    "./assets/dap_texture.png"
+    "https://cdn.jsdelivr.net/gh/mgohar/dapTunnelAnim@0.1.3/src/assets/dap_texture.png"
   ),
 });
 material.map.wrapS = THREE.RepeatWrapping;
@@ -484,7 +484,7 @@ scene.add(boxU1, boxU2, boxU3, boxU4, boxU5, boxU6, boxU7, boxU8);
 var videoV1 = document.createElement("video");
 var videoTextureV1 = new THREE.VideoTexture(videoV1);
 videoV1.src =
-  "https://cdn.jsdelivr.net/gh/mgohar/dapTunnelAnim@0.1.2/src/assets/Video/1.mp4";
+  "https://cdn.jsdelivr.net/gh/mgohar/dapTunnelAnim@0.1.2/src/assets/1.mp4";
 videoV1.crossOrigin = "anonymous";
 videoV1.muted = "muted";
 videoV1.loop = true;
@@ -506,7 +506,7 @@ boxV1.position.set(-0.4, -0.2, 74);
 var videoV2 = document.createElement("video");
 var videoTextureV2 = new THREE.VideoTexture(videoV2);
 videoV2.src =
-  "https://cdn.jsdelivr.net/gh/mgohar/dapTunnelAnim@0.1.2/src/assets/Video/2.mp4";
+  "https://cdn.jsdelivr.net/gh/mgohar/dapTunnelAnim@0.1.2/src/assets/2.mp4";
 videoV2.crossOrigin = "anonymous";
 videoV2.muted = "muted";
 videoV2.loop = true;
@@ -527,7 +527,7 @@ boxV2.position.set(0.4, -0.2, 73);
 var videoV3 = document.createElement("video");
 var videoTextureV3 = new THREE.VideoTexture(videoV3);
 videoV3.src =
-  "https://cdn.jsdelivr.net/gh/mgohar/dapTunnelAnim@0.1.2/src/assets/Video/3.mp4";
+  "https://cdn.jsdelivr.net/gh/mgohar/dapTunnelAnim@0.1.2/src/assets/3.mp4";
 videoV3.crossOrigin = "anonymous";
 videoV3.muted = "muted";
 videoV3.loop = true;
@@ -548,7 +548,7 @@ boxV3.position.set(-0.4, 0.4, 72);
 var videoV4 = document.createElement("video");
 var videoTextureV4 = new THREE.VideoTexture(videoV4);
 videoV4.src =
-  "https://cdn.jsdelivr.net/gh/mgohar/dapTunnelAnim@0.1.2/src/assets/Video/4.mp4";
+  "https://cdn.jsdelivr.net/gh/mgohar/dapTunnelAnim@0.1.2/src/assets/4.mp4";
 videoV4.crossOrigin = "anonymous";
 videoV4.muted = "muted";
 videoV4.loop = true;
@@ -569,7 +569,7 @@ boxV4.position.set(0.4, 0.4, 71);
 var videoV5 = document.createElement("video");
 var videoTextureV5 = new THREE.VideoTexture(videoV5);
 videoV5.src =
-  "https://cdn.jsdelivr.net/gh/mgohar/dapTunnelAnim@0.1.2/src/assets/Video/5.mp4";
+  "https://cdn.jsdelivr.net/gh/mgohar/dapTunnelAnim@0.1.2/src/assets/5.mp4";
 videoV5.crossOrigin = "anonymous";
 videoV5.muted = "muted";
 videoV5.loop = true;
@@ -591,7 +591,7 @@ boxV5.position.set(-0.4, -0.2, 70);
 var videoV6 = document.createElement("video");
 var videoTextureV6 = new THREE.VideoTexture(videoV6);
 videoV6.src =
-  "https://cdn.jsdelivr.net/gh/mgohar/dapTunnelAnim@0.1.2/src/assets/Video/2.mp4";
+  "https://cdn.jsdelivr.net/gh/mgohar/dapTunnelAnim@0.1.2/src/assets/2.mp4";
 videoV6.crossOrigin = "anonymous";
 videoV6.muted = "muted";
 videoV6.loop = true;
@@ -669,47 +669,24 @@ window.addEventListener("wheel", function (event) {
           duration: 0.3,
           ease: "power1.inOut",
         });
-        // Modify the path data
-        
-        event.deltaY > 0 ? window.scrollTo(0, canvasParent.offsetTop) : null;
-        event.deltaY > 0
-          ? (document.body.style.overflow = "hidden")
-          : (document.body.style.overflow = "auto");
-
-        // boxA.setAttribute("d", boxAPath);
-        // svgElement.appendChild(boxA);
-        delayCall = 1;
-        animationStart = true;
       }
     } else if (scrollCount >= 10 && scrollCount < 23) {
       if (delayCall == 0) {
-        event.deltaY > 0 ? window.scrollTo(0, canvasParent.offsetTop) : null;
         svgElement.setAttribute("viewBox", "0 0 477 49");
         gsap.to(boxA, {
           morphSVG: boxAPath,
           duration: 0.3,
           ease: "power1.inOut",
         });
-        // boxA.setAttribute("d", boxBPath);
-        // svgElement.appendChild(boxA);
-        delayCall = 1;
-        animationStart = true;
-        event.deltaY > 0 ? (document.body.style.overflow = "hidden") : null;
       }
     } else if (scrollCount >= 23 && scrollCount < 37) {
       if (delayCall == 0) {
-        event.deltaY > 0 ? window.scrollTo(0, canvasParent.offsetTop) : null;
         svgElement.setAttribute("viewBox", "0 0 526 49");
         gsap.to(boxA, {
           morphSVG: boxBPath,
           duration: 0.3,
           ease: "power1.inOut",
         });
-        // boxA.setAttribute("d", boxCPath);
-        // svgElement.appendChild(boxA);
-        delayCall = 1;
-        animationStart = true;
-        event.deltaY > 0 ? (document.body.style.overflow = "hidden") : null;
       }
     } else if (scrollCount >= 37 && scrollCount < 53) {
       if (delayCall == 0) {
@@ -719,10 +696,6 @@ window.addEventListener("wheel", function (event) {
           duration: 0.3,
           ease: "power1.inOut",
         });
-        // boxA.setAttribute("d", boxDPath);
-        // svgElement.appendChild(boxA);
-        delayCall = 1;
-        animationStart = true;
       }
     } else if (scrollCount >= 53 && scrollCount < 90) {
       if (delayCall == 0) {
@@ -732,34 +705,13 @@ window.addEventListener("wheel", function (event) {
           duration: 0.3,
           ease: "power1.inOut",
         });
-        // boxA.setAttribute("d", boxEPath);
-        // svgElement.appendChild(boxA);
-        delayCall = 1;
-        animationStart = true;
       }
     } else if (scrollCount >= 90 && scrollCount <= 99) {
       debounce(AnimateSVG, 2000,event);
-      
-     
-      event.deltaY > 0 ? null : (animationStart = true);
-      delayCall = 1;
-      animationStart = true;
-  
     } else if (scrollCount >= 100) {
-     
-      // event.deltaY > 0? gsap.to(SVGMain, { opacity: 1, scale:  window.innerWidth/(window.innerWidth/2), duration: 0.9 }):gsap.to(SVGMain, { opacity: 1, scale: 1, duration: 0.9 });
-      let canvasParent = this.document.querySelector(".canvasParent");
-      event.deltaY < 0 ? window.scrollTo(0, canvasParent.offsetTop) : null;
-      animationStart = true;
-      event.deltaY > 0 ? null : (animationStart = true);
-      event.deltaY > 0
-        ?document.body.style.overflow = "auto"
-        : (document.body.style.overflow = "hidden");
-      // console.log("Over_____________________");
+      // animationStart = true;
     }
-    setTimeout(() => {
-      delayCall = 0;
-    }, 1000);
+ 
 
     // Get the camera position and lookAt based on the updated percentage
     var p1 = path.getPointAt(percentage);
@@ -799,34 +751,26 @@ const animation = gsap.from(".element", {
 });
 
 ScrollTrigger.create({
-  trigger: ".canvasParent",
+  trigger: ".animationHeight",
   start: "top 5%",
   end: "bottom 70%",
-  markers: false,
+  markers: true,
   animation,
   onEnter: () => {
-    animationStart = true;
     // console.log("Element entered the viewport");
     const SVGMain = document.getElementById("SVGMain");
     gsap.to(SVGMain, { opacity: 1, scale: 1, duration: 2 });
     const body = document.querySelector("body");
   },
   onLeave: () => {
-    // document.body.style.overflow = 'auto'
-    // console.log("Element left the viewport");
-    animationStart = false;
-    // gsap.to(SVGMain, { opacity: 1, scale: 3, duration: 1 });
+    
   },
   onToggle: ({ isActive }) => {
     console.log("Active:", isActive);
     if (isActive) {
-      // gsap.to(SVGMain, { opacity: 1, scale: 1, duration: 2 });
-      animationStart = true;
-      // document.body.style.overflow = 'hidden'
+      animationStart=true
     } else {
-      // animationStart = false;
-      // gsap.to(SVGMain, { opacity: 1, scale: 3, duration: 1 });
-      // document.body.style.overflow = 'auto'
+      animationStart=false
     }
   },
 });
@@ -841,7 +785,6 @@ function debounce(func, wait,event) {
     }, wait);
 }
 function AnimateSVG(event) {
-  console.log('asdfasdfasfasfasfasfsafsfs---------------------------------------');
   event.deltaY < 0
         ? gsap.to(SVGMain, { opacity: 1, scale: 1, duration: 0.9 })
         :  gsap.to(SVGMain, { opacity: 1, scale: window.innerWidth/(window.innerWidth/2), duration: 0.9 });;

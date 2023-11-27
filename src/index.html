@@ -25,7 +25,11 @@
         /* display: none; */
       }
       .canvasParent {
-        position: relative;
+        position: sticky;
+        top: 0px;
+      }
+      .animationHeight{
+        height: 600vh;
       }
       .bz-animation-container h1 {
         font-size: 50px;
@@ -41,15 +45,6 @@
         opacity: 0;
         transform: scale(0);
       }
-      /* Hide scrollbar for Chrome and Safari */
-      ::-webkit-scrollbar {
-        width: 0;
-      }
-
-      /* Hide scrollbar thumb for Chrome and Safari */
-      ::-webkit-scrollbar-thumb {
-        background: transparent;
-      }
      
     </style>
   </head>
@@ -59,7 +54,7 @@
 
   <body>
     <div style="background-color: black; height: 100vh"></div>
-    <div>
+    <div class="animationHeight">
       <div class="canvasParent">
         <div class="bz-animation-container">
           <svg id="SVGMain" width="477" height="49" viewBox="0 0 477 49" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -73,7 +68,7 @@
     </div>
     <div
       class="sectionC"
-      style="background-color: rgb(2, 255, 242); height: 300vh"
+      style="background-color: rgb(255, 255, 255); height: 300vh"
     ></div>
 
     <script>
