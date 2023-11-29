@@ -200,7 +200,6 @@ var boxMaterial4 = new THREE.ShaderMaterial({
 var box4 = new THREE.Mesh(boxGeometry4, boxMaterial4);
 box4.position.set(0.4, 0.4, 95);
 
-
 scene.add(box1, box2, box3, box4);
 //===================================================== PHOTOGRAPHY
 // BoxP1
@@ -645,85 +644,81 @@ document.addEventListener("touchstart", (e) => {
   startY = e.touches[0].clientY;
 });
 
-
-window.addEventListener("wheel", function (event) {
-  // console.log("Wheel",event.deltaY,animationStart);
-  if (animationStart) {
-    if (event.deltaY > 0) {
-      percentage += 0.009;
-      scrollCount++;
-    } else if (event.deltaY < 0) {
-      if (percentage > 0.005) {
-        percentage -= 0.009;
-        scrollCount--;
-      }
-    }
-    let canvasParent = this.document.querySelector(".canvasParent");
-    console.log("scrollCount:", scrollCount);
-
-    if (scrollCount > -2 && scrollCount < 10) {
-      if (delayCall == 0) {
-        svgElement.setAttribute("viewBox", "0 0 477 49");
-        gsap.to(boxA, {
-          morphSVG: boxAPath,
-          duration: 0.3,
-          ease: "power1.inOut",
-        });
-      }
-    } else if (scrollCount >= 10 && scrollCount < 23) {
-      if (delayCall == 0) {
-        svgElement.setAttribute("viewBox", "0 0 477 49");
-        gsap.to(boxA, {
-          morphSVG: boxAPath,
-          duration: 0.3,
-          ease: "power1.inOut",
-        });
-      }
-    } else if (scrollCount >= 23 && scrollCount < 37) {
-      if (delayCall == 0) {
-        svgElement.setAttribute("viewBox", "0 0 526 49");
-        gsap.to(boxA, {
-          morphSVG: boxBPath,
-          duration: 0.3,
-          ease: "power1.inOut",
-        });
-      }
-    } else if (scrollCount >= 37 && scrollCount < 53) {
-      if (delayCall == 0) {
-        svgElement.setAttribute("viewBox", "0 0 526 48");
-        gsap.to(boxA, {
-          morphSVG: boxBPath,
-          duration: 0.3,
-          ease: "power1.inOut",
-        });
-      }
-    } else if (scrollCount >= 53 && scrollCount < 90) {
-      if (delayCall == 0) {
-        svgElement.setAttribute("viewBox", "0 0 511 49");
-        gsap.to(boxA, {
-          morphSVG: boxCPath,
-          duration: 0.3,
-          ease: "power1.inOut",
-        });
-      }
-    } else if (scrollCount >= 90 && scrollCount <= 99) {
-      debounce(AnimateSVG, 2000,event);
-    } else if (scrollCount >= 100) {
-      // animationStart = true;
-    }
- 
-
-    // Get the camera position and lookAt based on the updated percentage
-    var p1 = path.getPointAt(percentage);
-    var p2 = path.getPointAt(percentage);
-    light.position.set(p2.x, p2.y, p2.z);
-
-    if (event.deltaY < 0) {
-      gsap.to(camera.position, { z: p1.z, duration: 2 });
-    } else {
-      gsap.to(camera.position, { z: p1.z, duration: 2 });
-    }
+const track = document.querySelector(".animationHeight");
+const tl = gsap.timeline({ paused: true });
+tl.to(camera.position, {
+  duration: 10,
+  z: 54,
+});
+window.addEventListener("scroll", function (event) {
+  const trackHeight = track.offsetHeight;
+  const windowHeight = window.innerHeight;
+  const progress =
+    (window.pageYOffset - track.offsetTop) / (trackHeight - windowHeight);
+  if (progress * 100 >= 50) {
+    svgElement.setAttribute("viewBox", "0 0 511 49");
+    gsap.to(boxA, {
+      morphSVG: boxCPath,
+      duration: 0.3,
+      ease: "power1.inOut",
+    });
+  } else if (progress * 100 >= 38) {
+    svgElement.setAttribute("viewBox", "0 0 526 49");
+    gsap.to(boxA, {
+      morphSVG: boxBPath,
+      duration: 0.3,
+      ease: "power1.inOut",
+    });
+  } else if (progress * 100 >= 5) {
+    svgElement.setAttribute("viewBox", "0 0 477 49");
+    gsap.to(boxA, {
+      morphSVG: boxAPath,
+      duration: 0.3,
+      ease: "power1.inOut",
+    });
   }
+  // } else if (scrollCount >= 10 && scrollCount < 23) {
+  //   if (delayCall == 0) {
+  //     svgElement.setAttribute("viewBox", "0 0 477 49");
+  //     gsap.to(boxA, {
+  //       morphSVG: boxAPath,
+  //       duration: 0.3,
+  //       ease: "power1.inOut",
+  //     });
+  //   }
+  // } else if (scrollCount >= 23 && scrollCount < 37) {
+  //   if (delayCall == 0) {
+  //     svgElement.setAttribute("viewBox", "0 0 526 49");
+  //     gsap.to(boxA, {
+  //       morphSVG: boxBPath,
+  //       duration: 0.3,
+  //       ease: "power1.inOut",
+  //     });
+  //   }
+  // } else if (scrollCount >= 37 && scrollCount < 53) {
+  //   if (delayCall == 0) {
+  //     svgElement.setAttribute("viewBox", "0 0 526 48");
+  //     gsap.to(boxA, {
+  //       morphSVG: boxBPath,
+  //       duration: 0.3,
+  //       ease: "power1.inOut",
+  //     });
+  //   }
+  // } else if (scrollCount >= 53 && scrollCount < 90) {
+  //   if (delayCall == 0) {
+  //     svgElement.setAttribute("viewBox", "0 0 511 49");
+  //     gsap.to(boxA, {
+  //       morphSVG: boxCPath,
+  //       duration: 0.3,
+  //       ease: "power1.inOut",
+  //     });
+  //   }
+  // } else if (scrollCount >= 90 && scrollCount <= 99) {
+  //   debounce(AnimateSVG, 2000,event);
+  // } else if (scrollCount >= 100) {
+  //   // animationStart = true;
+  // }
+  tl.progress(progress);
 });
 
 window.addEventListener("mousemove", function (e) {
@@ -762,32 +757,34 @@ ScrollTrigger.create({
     gsap.to(SVGMain, { opacity: 1, scale: 1, duration: 2 });
     const body = document.querySelector("body");
   },
-  onLeave: () => {
-    
-  },
+  onLeave: () => {},
   onToggle: ({ isActive }) => {
     console.log("Active:", isActive);
     if (isActive) {
-      animationStart=true
+      animationStart = true;
     } else {
-      animationStart=false
+      animationStart = false;
     }
   },
 });
 
-let check=1;
-function debounce(func, wait,event) {
+let check = 1;
+function debounce(func, wait, event) {
   let timeout;
-  if(check==1) func(event);
-    clearTimeout(timeout);
-    timeout = setTimeout(() => {
-      check=1;
-    }, wait);
+  if (check == 1) func(event);
+  clearTimeout(timeout);
+  timeout = setTimeout(() => {
+    check = 1;
+  }, wait);
 }
 function AnimateSVG(event) {
   event.deltaY < 0
-        ? gsap.to(SVGMain, { opacity: 1, scale: 1, duration: 0.9 })
-        :  gsap.to(SVGMain, { opacity: 1, scale: window.innerWidth/(window.innerWidth/2), duration: 0.9 });;
+    ? gsap.to(SVGMain, { opacity: 1, scale: 1, duration: 0.9 })
+    : gsap.to(SVGMain, {
+        opacity: 1,
+        scale: window.innerWidth / (window.innerWidth / 2),
+        duration: 0.9,
+      });
 
-  check=0
+  check = 0;
 }
