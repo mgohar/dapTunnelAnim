@@ -646,8 +646,7 @@ let startY = 0;
 
 gsap.to(svgElement, {
   opacity: 1,
-  scale: window.innerWidth / (window.innerWidth / 2),
-  duration: 2,
+  scale: window.innerWidth / (window.innerWidth / 2)
 })
 const track = document.querySelector(".animationHeight");
 const tl = gsap.timeline({ paused: true });
@@ -655,10 +654,17 @@ tl.to(svgElement, {
   opacity: 1,
   scale: 1,
   duration: 2,
+  backgroundColor:"transparent"
+  // onStart:()=>{
+  //  svgElement.style.backgroundColor = 'white';
+  // },
+  // onComplete:()=>{
+  //   svgElement.style.backgroundColor = 'transparent';
+  // }
 }).to(camera.position, {
   duration: 10,
   z: 54,
-}).to(boxA, {
+},"-=3").to(boxA, {
   morphSVG: boxBPath,
   duration: 0.5,
   ease: "power1.inOut",
