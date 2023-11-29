@@ -640,43 +640,67 @@ const svgElement = document.getElementById("SVGMain");
 
 let startY = 0;
 
-document.addEventListener("touchstart", (e) => {
-  startY = e.touches[0].clientY;
-});
+// document.addEventListener("touchstart", (e) => {
+//   startY = e.touches[0].clientY;
+// });
 
+gsap.to(svgElement, {
+  opacity: 1,
+  scale: window.innerWidth / (window.innerWidth / 2),
+  duration: 2,
+})
 const track = document.querySelector(".animationHeight");
 const tl = gsap.timeline({ paused: true });
-tl.to(camera.position, {
+tl.to(svgElement, {
+  opacity: 1,
+  scale: 1,
+  duration: 2,
+}).to(camera.position, {
   duration: 10,
   z: 54,
-});
+}).to(boxA, {
+  morphSVG: boxBPath,
+  duration: 0.5,
+  ease: "power1.inOut",
+  onStart:()=>{svgElement.setAttribute("viewBox", "0 0 526 49");}
+},"-=6.5").to(boxA, {
+  morphSVG: boxCPath,
+  duration: 0.5,
+  ease: "power1.inOut",
+  onStart:()=>{svgElement.setAttribute("viewBox", "0 0 511 49");}
+},"-=5.2").to(svgElement, {
+  opacity: 1,
+  scale: window.innerWidth / (window.innerWidth / 2),
+  duration: 2,
+},"-=3");
 window.addEventListener("scroll", function (event) {
   const trackHeight = track.offsetHeight;
   const windowHeight = window.innerHeight;
   const progress =
     (window.pageYOffset - track.offsetTop) / (trackHeight - windowHeight);
-  if (progress * 100 >= 50) {
-    svgElement.setAttribute("viewBox", "0 0 511 49");
-    gsap.to(boxA, {
-      morphSVG: boxCPath,
-      duration: 0.3,
-      ease: "power1.inOut",
-    });
-  } else if (progress * 100 >= 38) {
-    svgElement.setAttribute("viewBox", "0 0 526 49");
-    gsap.to(boxA, {
-      morphSVG: boxBPath,
-      duration: 0.3,
-      ease: "power1.inOut",
-    });
-  } else if (progress * 100 >= 5) {
-    svgElement.setAttribute("viewBox", "0 0 477 49");
-    gsap.to(boxA, {
-      morphSVG: boxAPath,
-      duration: 0.3,
-      ease: "power1.inOut",
-    });
-  }
+  // if (progress * 100 >= 50) {
+  //   svgElement.setAttribute("viewBox", "0 0 511 49");
+  //   gsap.to(boxA, {
+  //     morphSVG: boxCPath,
+  //     duration: 0.3,
+  //     ease: "power1.inOut",
+  //   });
+  // } else if (progress * 100 >= 38) {
+    
+  //   svgElement.setAttribute("viewBox", "0 0 526 49");
+  //   gsap.to(boxA, {
+  //     morphSVG: boxBPath,
+  //     duration: 0.3,
+  //     ease: "power1.inOut",
+  //   });
+  // } else if (progress * 100 >= 5) {
+  //   svgElement.setAttribute("viewBox", "0 0 477 49");
+  //   gsap.to(boxA, {
+  //     morphSVG: boxAPath,
+  //     duration: 0.3,
+  //     ease: "power1.inOut",
+  //   });
+  // }
   
   tl.progress(progress);
 });
@@ -686,8 +710,7 @@ window.addEventListener("mousemove", function (e) {
   const y = e.clientY * 0.0003 - 0.25;
   gsap.to(camera.position, { x: x, y: -y, duration: 2 });
 });
-var p1 = path.getPointAt(0 % 1);
-// camera.position.set(p1.x, p1.y, p1.z);
+
 
 function animate() {
   renderer.render(scene, camera);
@@ -709,7 +732,7 @@ ScrollTrigger.create({
   trigger: ".animationHeight",
   start: "top 5%",
   end: "bottom 70%",
-  markers: true,
+  markers: false,
   animation,
   onEnter: () => {
     // console.log("Element entered the viewport");
@@ -748,3 +771,12 @@ function AnimateSVG(event) {
 
   check = 0;
 }
+
+
+function Responsive() {
+  if(window.innerWidth<=700){
+    console.log("window.innerWidth:",window.innerWidth);
+    // svgElement.style.transform="scale(0.6)!important";
+  }
+}
+Responsive();
