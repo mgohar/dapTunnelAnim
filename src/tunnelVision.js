@@ -677,47 +677,7 @@ window.addEventListener("scroll", function (event) {
       ease: "power1.inOut",
     });
   }
-  // } else if (scrollCount >= 10 && scrollCount < 23) {
-  //   if (delayCall == 0) {
-  //     svgElement.setAttribute("viewBox", "0 0 477 49");
-  //     gsap.to(boxA, {
-  //       morphSVG: boxAPath,
-  //       duration: 0.3,
-  //       ease: "power1.inOut",
-  //     });
-  //   }
-  // } else if (scrollCount >= 23 && scrollCount < 37) {
-  //   if (delayCall == 0) {
-  //     svgElement.setAttribute("viewBox", "0 0 526 49");
-  //     gsap.to(boxA, {
-  //       morphSVG: boxBPath,
-  //       duration: 0.3,
-  //       ease: "power1.inOut",
-  //     });
-  //   }
-  // } else if (scrollCount >= 37 && scrollCount < 53) {
-  //   if (delayCall == 0) {
-  //     svgElement.setAttribute("viewBox", "0 0 526 48");
-  //     gsap.to(boxA, {
-  //       morphSVG: boxBPath,
-  //       duration: 0.3,
-  //       ease: "power1.inOut",
-  //     });
-  //   }
-  // } else if (scrollCount >= 53 && scrollCount < 90) {
-  //   if (delayCall == 0) {
-  //     svgElement.setAttribute("viewBox", "0 0 511 49");
-  //     gsap.to(boxA, {
-  //       morphSVG: boxCPath,
-  //       duration: 0.3,
-  //       ease: "power1.inOut",
-  //     });
-  //   }
-  // } else if (scrollCount >= 90 && scrollCount <= 99) {
-  //   debounce(AnimateSVG, 2000,event);
-  // } else if (scrollCount >= 100) {
-  //   // animationStart = true;
-  // }
+  
   tl.progress(progress);
 });
 
